@@ -6,4 +6,7 @@
         <item>7</item>
         <item>9</item>
     </integer-array>
+    <string-array name="config_tether_apndata">
+        <item>Telstra Tethering,telstra.internet,,,,,,,,,505,01,,DUN</item>
+    </string-array>
 </resources>

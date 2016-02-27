@@ -99,4 +99,20 @@
         <item quantity="other">%d秒後に再試行</item>
         <item quantity="one">1秒後に再試行</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">%1$d分間（%2$sまで）</item>
+        <item quantity="one">1分間（%2$sまで）</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">%1$d時間（%2$sまで）</item>
+        <item quantity="one">1時間（%2$sまで）</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">%d分</item>
+        <item quantity="one">1分</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">%d時間</item>
+        <item quantity="one">1時間</item>
+    </plurals>
 </resources>

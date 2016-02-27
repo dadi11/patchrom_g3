@@ -99,4 +99,20 @@
         <item quantity="other">Coba %d detik lagi</item>
         <item quantity="one">Coba 1 dtk lagi</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">Selama %1$d menit (hingga %2$s)</item>
+        <item quantity="one">Selama semenit (hingga %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">Selama %1$d jam (hingga %2$s)</item>
+        <item quantity="one">Selama sejam (hingga %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Selama %d menit</item>
+        <item quantity="one">Selama satu menit</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Selama %d jam</item>
+        <item quantity="one">Selama satu jam</item>
+    </plurals>
 </resources>

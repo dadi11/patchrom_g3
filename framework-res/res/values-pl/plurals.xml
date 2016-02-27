@@ -9,11 +9,11 @@
         <item quantity="one">sekundę temu</item>
     </plurals>
     <plurals name="num_minutes_ago">
-        <item quantity="other">%d min. temu</item>
+        <item quantity="other">%d min temu</item>
         <item quantity="one">1 minutę temu</item>
     </plurals>
     <plurals name="num_hours_ago">
-        <item quantity="other">%d godzin temu</item>
+        <item quantity="other">%d godz. temu</item>
         <item quantity="one">godzinę temu</item>
     </plurals>
     <plurals name="last_num_days">
@@ -98,5 +98,21 @@
     <plurals name="restr_pin_countdown">
         <item quantity="other">Spróbuj za %d s</item>
         <item quantity="one">Spróbuj za sekundę</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">Przez %1$d min (do %2$s)</item>
+        <item quantity="one">Przez minutę (do %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">Przez %1$d godz. (do %2$s)</item>
+        <item quantity="one">Przez godzinę (do %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Przez %d min</item>
+        <item quantity="one">Przez minutę</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Przez %d godz.</item>
+        <item quantity="one">Przez 1 godz.</item>
     </plurals>
 </resources>

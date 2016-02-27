@@ -99,4 +99,20 @@
         <item quantity="other">In %d Sek. wiederholen</item>
         <item quantity="one">In 1 Sek. wiederholen</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">%1$d Minuten (bis %2$s)</item>
+        <item quantity="one">1 Minute (bis %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">%1$d Stunden (bis %2$s)</item>
+        <item quantity="one">1 Stunde (bis %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Für %d Minuten</item>
+        <item quantity="one">Für eine Minute</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Für %d Stunden</item>
+        <item quantity="one">Für eine Stunde</item>
+    </plurals>
 </resources>

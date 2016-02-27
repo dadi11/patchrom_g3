@@ -99,4 +99,20 @@
         <item quantity="other">សូម​ព្យាយាម​ម្ដង​ទៀត​ក្នុង​រយៈពេល %d វិនាទី</item>
         <item quantity="one">ព្យាយាម​ម្ដង​ទៀត​ក្នុង​រយៈ​ពេល​ ១​វិនាទី។</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">សម្រាប់ %1$d នាទី​ (រហូត​ដល់ %2$s)</item>
+        <item quantity="one">សម្រាប់​មួយ​នាទី (រហូត​ដល់ %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">សម្រាប់ %1$d ម៉ោង (រហូត​ដល់ %2$s)</item>
+        <item quantity="one">សម្រាប់​មួយ​ម៉ោង (រហូត​ដល់ %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">សម្រាប់ %d នាទី</item>
+        <item quantity="one">សម្រាប់​មួយ​នាទី</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">សម្រាប់ %d ម៉ោង</item>
+        <item quantity="one">សម្រាប់​មួយ​ម៉ោង</item>
+    </plurals>
 </resources>

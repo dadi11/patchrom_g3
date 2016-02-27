@@ -99,4 +99,20 @@
         <item quantity="other">Proovige uuesti %d sekundi pärast</item>
         <item quantity="one">Proovige uuesti 1 sekundi pärast</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">%1$d minutiks (kuni %2$s)</item>
+        <item quantity="one">Üheks minutiks (kuni %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">%1$d tunniks (kuni %2$s)</item>
+        <item quantity="one">Üheks tunniks (kuni %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">%d minutiks</item>
+        <item quantity="one">Üheks minutiks</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">%d tunniks</item>
+        <item quantity="one">Üheks tunniks</item>
+    </plurals>
 </resources>

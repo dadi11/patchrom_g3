@@ -99,4 +99,20 @@
         <item quantity="other">%d секундын дараа дахин оролдоно уу</item>
         <item quantity="one">1 секундын дараа дахин оролдоно уу</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">%1$d минутын турш (%2$s хүртэл)</item>
+        <item quantity="one">Нэг минутын турш (%2$s хүртэл)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">%1$d цагийн турш (%2$s хүртэл)</item>
+        <item quantity="one">Нэг цагийн турш (%2$s хүртэл)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">%d минутын турш</item>
+        <item quantity="one">Нэг минутын турш</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">%d цагийн турш</item>
+        <item quantity="one">Нэг цагийн турш</item>
+    </plurals>
 </resources>

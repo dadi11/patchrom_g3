@@ -99,4 +99,20 @@
         <item quantity="other">Hãy thử lại sau %d giây</item>
         <item quantity="one">Hãy thử lại sau 1 giây</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">Trong %1$d phút (cho đến %2$s)</item>
+        <item quantity="one">Trong một phút (cho đến %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">Trong %1$d giờ (cho đến %2$s)</item>
+        <item quantity="one">Trong một giờ (cho đến %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Trong %d phút</item>
+        <item quantity="one">Trong một phút</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Trong %d giờ</item>
+        <item quantity="one">Trong một giờ</item>
+    </plurals>
 </resources>

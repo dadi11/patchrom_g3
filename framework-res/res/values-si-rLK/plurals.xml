@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">SIM කාඩ් පත අඟුළු වැටීමට පෙර ඔබ සතුව තවත් උත්සාහයන් %d ක් ඉතිරිව ඇත.</item>
+        <item quantity="one">SIM කාඩ් පත අඟුළු වැටීමට පෙර ඔබ සතුව තවත් උත්සාහයන් %d ක් ඉතිරිව ඇත.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">තත්පර %d ට පෙර</item>
         <item quantity="one">තත්පර 1 කට පෙර</item>
@@ -94,5 +98,21 @@
     <plurals name="restr_pin_countdown">
         <item quantity="other">තත්පර %d කින් නැවත උත්සහ කරන්න</item>
         <item quantity="one">තවත් තත්පර 1 කින් යළි උත්සාහ කරන්න</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">මිනිත්තු %1$d සඳහා (%2$s තෙක්)</item>
+        <item quantity="one">මිනිත්තු එකක් සඳහා (%2$s තෙක්)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">පැය %1$d සඳහා (%2$s තෙක්)</item>
+        <item quantity="one">පැය එකක් සඳහා (%2$s තෙක්)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">විනාඩි %d සඳහා</item>
+        <item quantity="one">විනාඩි එකක් සඳහා</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">පැය %d ක් සඳහා</item>
+        <item quantity="one">පැයක් සඳහා</item>
     </plurals>
 </resources>

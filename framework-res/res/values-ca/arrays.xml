@@ -4,7 +4,7 @@
         <item>Casa</item>
         <item>Feina</item>
         <item>Altres</item>
-        <item>Personalitzada</item>
+        <item>Personalitza</item>
     </string-array>
     <string-array name="imProtocols">
         <item>AIM</item>
@@ -35,7 +35,7 @@
         <item>Casa</item>
         <item>Feina</item>
         <item>Altres</item>
-        <item>Personalitzada</item>
+        <item>Personalitza</item>
     </string-array>
     <string-array name="imAddressTypes">
         <item>Casa</item>

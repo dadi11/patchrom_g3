@@ -1,0 +1,72 @@
+package android.net;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+
+public class NetworkMisc implements Parcelable {
+    public static final Creator<NetworkMisc> CREATOR;
+    public boolean allowBypass;
+    public boolean explicitlySelected;
+    public String subscriberId;
+
+    /* renamed from: android.net.NetworkMisc.1 */
+    static class C04931 implements Creator<NetworkMisc> {
+        C04931() {
+        }
+
+        public NetworkMisc createFromParcel(Parcel in) {
+            boolean z;
+            boolean z2 = true;
+            NetworkMisc networkMisc = new NetworkMisc();
+            if (in.readInt() != 0) {
+                z = true;
+            } else {
+                z = false;
+            }
+            networkMisc.allowBypass = z;
+            if (in.readInt() == 0) {
+                z2 = false;
+            }
+            networkMisc.explicitlySelected = z2;
+            networkMisc.subscriberId = in.readString();
+            return networkMisc;
+        }
+
+        public NetworkMisc[] newArray(int size) {
+            return new NetworkMisc[size];
+        }
+    }
+
+    public NetworkMisc(NetworkMisc nm) {
+        if (nm != null) {
+            this.allowBypass = nm.allowBypass;
+            this.explicitlySelected = nm.explicitlySelected;
+            this.subscriberId = nm.subscriberId;
+        }
+    }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        int i;
+        int i2 = 1;
+        if (this.allowBypass) {
+            i = 1;
+        } else {
+            i = 0;
+        }
+        out.writeInt(i);
+        if (!this.explicitlySelected) {
+            i2 = 0;
+        }
+        out.writeInt(i2);
+        out.writeString(this.subscriberId);
+    }
+
+    static {
+        CREATOR = new C04931();
+    }
+}

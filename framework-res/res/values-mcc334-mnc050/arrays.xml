@@ -6,4 +6,7 @@
         <item>7</item>
         <item>9</item>
     </integer-array>
+    <string-array name="config_tether_apndata">
+        <item>Modem,modem.iusacellgsm.mx,,,iusacellgsm,iusacellgsm,,,,,334,050,1,DUN</item>
+    </string-array>
 </resources>

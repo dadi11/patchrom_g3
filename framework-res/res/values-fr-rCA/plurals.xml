@@ -49,7 +49,7 @@
     </plurals>
     <plurals name="abbrev_num_hours_ago">
         <item quantity="other">il y a %d heures</item>
-        <item quantity="one">Il y a 1 h.</item>
+        <item quantity="one">Il y a 1 h</item>
     </plurals>
     <plurals name="abbrev_num_days_ago">
         <item quantity="other">il y a %d jours</item>
@@ -98,5 +98,21 @@
     <plurals name="restr_pin_countdown">
         <item quantity="other">Réessayer dans %d s</item>
         <item quantity="one">Réessayer dans 1 s</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">"Pendant %1$d minutes (jusqu'à %2$s)"</item>
+        <item quantity="one">"Pendant une minute (jusqu'à %2$s)"</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">"Pendant %1$d heures (jusqu'à %2$s)"</item>
+        <item quantity="one">"Pendant une heure (jusqu'à %2$s)"</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Pendant %d minutes</item>
+        <item quantity="one">Pendant une minute</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Pendant %d heures</item>
+        <item quantity="one">Pendant une heure</item>
     </plurals>
 </resources>

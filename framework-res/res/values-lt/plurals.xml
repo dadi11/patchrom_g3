@@ -99,4 +99,20 @@
         <item quantity="other">Band. dar po %d s</item>
         <item quantity="one">Band. dar po 1 s</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">%1$d min. (iki %2$s)</item>
+        <item quantity="one">Vieną minutę (iki %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">%1$d val. (iki %2$s)</item>
+        <item quantity="one">Vieną valandą (iki %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">%d min.</item>
+        <item quantity="one">1 min.</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">%d val.</item>
+        <item quantity="one">1 val.</item>
+    </plurals>
 </resources>

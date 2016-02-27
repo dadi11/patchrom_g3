@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">SIM बन्द हुनु अघि तपाईंसँग %d बाँकी प्रयासहरू छन्।</item>
+        <item quantity="one">तपाईंसँग SIM बन्द हुनु अघि %d बाँकी प्रयास छ।</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d सेकेन्ड अघि</item>
         <item quantity="one">१ सेकेन्ड अघि</item>
@@ -80,12 +84,12 @@
         <item quantity="one">१ घन्टा</item>
     </plurals>
     <plurals name="wifi_available">
-        <item quantity="other">वाइ-फाइ नेटवर्कहरू उपलब्ध</item>
-        <item quantity="one">वाइ-फाइ नेटवर्क उपलब्ध छ</item>
+        <item quantity="other">वाइफाइ नेटवर्कहरू उपलब्ध</item>
+        <item quantity="one">वाइफाइ नेटवर्क उपलब्ध छ</item>
     </plurals>
     <plurals name="wifi_available_detailed">
-        <item quantity="other">खुल्ला वाइ-फाइ नेटवर्क उपलब्ध छ</item>
-        <item quantity="one">खुल्ला वाइ-फाइ नेटवर्क उपलब्ध छ</item>
+        <item quantity="other">खुल्ला वाइफाइ नेटवर्क उपलब्ध छ</item>
+        <item quantity="one">खुल्ला वाइफाइ नेटवर्क उपलब्ध छ</item>
     </plurals>
     <plurals name="matches_found">
         <item quantity="other">%1$d को %2$d</item>
@@ -94,5 +98,21 @@
     <plurals name="restr_pin_countdown">
         <item quantity="other">%d सेकेन्डमा पुनः प्रयास गर्नुहोस्</item>
         <item quantity="one">१ सेकेन्ड पछि पुनः प्रयास गर्नुहोस्।</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">%1$d मिनेटको लागि (%2$s सम्म)</item>
+        <item quantity="one">एक मिनेटको लागि (%2$s सम्म)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">%1$d घण्टाको लागि (%2$s सम्म)</item>
+        <item quantity="one">एक घण्टाको लागि (%2$s सम्म)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">%d मिनेटको लागि</item>
+        <item quantity="one">एक मिनेटको लागि</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">%d घण्टाको लागि</item>
+        <item quantity="one">एक घण्टाको लागि</item>
     </plurals>
 </resources>

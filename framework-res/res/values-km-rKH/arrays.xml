@@ -19,7 +19,7 @@
     <string-array name="organizationTypes">
         <item>កន្លែង​ធ្វើការ</item>
         <item>ផ្សេងៗ</item>
-        <item>តាម​តម្រូវ​ការ</item>
+        <item>តាម​តម្រូវ​ការ​</item>
     </string-array>
     <string-array name="phoneTypes">
         <item>ផ្ទះ</item>

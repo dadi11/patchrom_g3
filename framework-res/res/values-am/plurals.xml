@@ -36,7 +36,7 @@
         <item quantity="one">"በ  1 ሰዓት"</item>
     </plurals>
     <plurals name="in_num_days">
-        <item quantity="other">በ%d ቀናት</item>
+        <item quantity="other">በ%d ቀኖች</item>
         <item quantity="one">ነገ</item>
     </plurals>
     <plurals name="abbrev_num_seconds_ago">
@@ -68,7 +68,7 @@
         <item quantity="one">"በ  1 ሰዓት"</item>
     </plurals>
     <plurals name="abbrev_in_num_days">
-        <item quantity="other">በ%d ቀናት</item>
+        <item quantity="other">በ%d ቀኖች</item>
         <item quantity="one">ነገ</item>
     </plurals>
     <plurals name="duration_seconds">
@@ -98,5 +98,21 @@
     <plurals name="restr_pin_countdown">
         <item quantity="other">በ%d ሰከንዶች ውስጥ እንደገና ይሞክሩ</item>
         <item quantity="one">በ1 ሰከንድ ውስጥ እንደገና ይሞክሩ</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">ለ%1$d ደቂቃዎች (እስከ %2$s ድረስ)</item>
+        <item quantity="one">ለአንድ ደቂቃ (እስከ %2$s ድረስ)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">ለ%1$d ሰዓቶች (እስከ %2$s ድረስ)</item>
+        <item quantity="one">ለአንድ ሰዓት (እስከ %2$s ድረስ)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">ለ%d ደቂቃዎች</item>
+        <item quantity="one">ለአንድ ደቂቃ</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">ለ%d ሰዓቶች</item>
+        <item quantity="one">ለአንድ ሰዓት</item>
     </plurals>
 </resources>

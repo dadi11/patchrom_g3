@@ -99,4 +99,20 @@
         <item quantity="other">ລອງໃໝ່ໃນອີກ %d ວິນາທີ</item>
         <item quantity="one">ລອງໃໝ່ໃນອີກ 1 ວິນາທີ</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">​ເປັນ​ເວ​ລາ %1$d ​ນາ​ທີ (ຈົນ​ຮອດ %2$s)</item>
+        <item quantity="one">​ເປັນ​ເວ​ລາ 1 ນາ​ທີ (ຈົນ​ຮອດ %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">​ເປັນ​ເວ​ລາ %1$d ​ຊົ່ວ​ໂມງ (​ຈົນ​ຮອດ %2$s)</item>
+        <item quantity="one">​ເປັນ​ເວ​ລາ 1 ຊົ່ວ​ໂມງ (ຈົນ​ຮອດ %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">ເປັນ​ເວລາ %d ນາ​ທີ</item>
+        <item quantity="one">ເປັນ​ເວລາ​ນຶ່ງ​ນາ​ທີ</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">ເປັນ​ເວລາ %d ຊົ່ວ​ໂມງ</item>
+        <item quantity="one">ເປັນ​ເວລາ​ນຶ່ງ​ຊົ່ວ​ໂມງ</item>
+    </plurals>
 </resources>

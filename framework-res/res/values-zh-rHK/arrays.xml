@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="emailAddressTypes">
-        <item>首頁</item>
-        <item>工作</item>
+        <item>住宅</item>
+        <item>公司</item>
         <item>其他</item>
         <item>自訂</item>
     </string-array>
@@ -17,14 +17,14 @@
         <item>Jabber</item>
     </string-array>
     <string-array name="organizationTypes">
-        <item>工作</item>
+        <item>公司</item>
         <item>其他</item>
         <item>自訂</item>
     </string-array>
     <string-array name="phoneTypes">
-        <item>首頁</item>
+        <item>住宅</item>
         <item>手機</item>
-        <item>工作</item>
+        <item>公司</item>
         <item>公司傳真</item>
         <item>住宅傳真</item>
         <item>傳呼機</item>
@@ -32,14 +32,14 @@
         <item>自訂</item>
     </string-array>
     <string-array name="postalAddressTypes">
-        <item>首頁</item>
-        <item>工作</item>
+        <item>住宅</item>
+        <item>公司</item>
         <item>其他</item>
         <item>自訂</item>
     </string-array>
     <string-array name="imAddressTypes">
-        <item>首頁</item>
-        <item>工作</item>
+        <item>住宅</item>
+        <item>公司</item>
         <item>其他</item>
         <item>自訂</item>
     </string-array>

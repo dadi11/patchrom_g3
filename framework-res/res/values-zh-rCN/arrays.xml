@@ -46,7 +46,7 @@
     </integer-array>
     <string-array name="imAddressTypes">
         <item>住宅</item>
-        <item>单位</item>
+        <item>工作</item>
         <item>其他</item>
         <item>自定义</item>
     </string-array>

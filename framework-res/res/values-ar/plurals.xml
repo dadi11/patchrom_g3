@@ -13,7 +13,7 @@
         <item quantity="one">قبل دقيقة واحدة</item>
     </plurals>
     <plurals name="num_hours_ago">
-        <item quantity="other">قبل %d ساعة</item>
+        <item quantity="other">قبل %d ساعات</item>
         <item quantity="one">قبل ساعة واحدة</item>
     </plurals>
     <plurals name="last_num_days">
@@ -98,5 +98,21 @@
     <plurals name="restr_pin_countdown">
         <item quantity="other">أعد المحاولة خلال %d ثانية</item>
         <item quantity="one">أعد المحاولة خلال ثانية واحدة.</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">‏لمدة %1$d من الدقائق (حتى %2$s)</item>
+        <item quantity="one">لمدة دقيقة واحدة (حتى %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">‏لمدة %1$d من الساعات (حتى %2$s)</item>
+        <item quantity="one">لمدة ساعة واحدة (حتى %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">‏لمدة %d من الدقائق</item>
+        <item quantity="one">لمدة دقيقة واحدة</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">‏لمدة %d من الساعات</item>
+        <item quantity="one">لمدة ساعة واحدة</item>
     </plurals>
 </resources>

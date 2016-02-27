@@ -99,4 +99,20 @@
         <item quantity="other">"Torna-ho a provar d'aquí a %d segons"</item>
         <item quantity="one">"Torna-ho a provar d'aquí a 1 segon"</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">Durant %1$d minuts (fins a les %2$s)</item>
+        <item quantity="one">Durant 1 minut (fins a les %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">Durant %1$d hores (fins a les %2$s)</item>
+        <item quantity="one">Durant 1 hora (fins a les %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Durant %d minuts</item>
+        <item quantity="one">Durant un minut</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Durant %d hores</item>
+        <item quantity="one">Durant una hora</item>
+    </plurals>
 </resources>

@@ -99,4 +99,20 @@
         <item quantity="other">Skúste to zas o %d s</item>
         <item quantity="one">Skúste to zas o 1 s</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">Na %1$d min. (do %2$s)</item>
+        <item quantity="one">Na minútu (do %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">Na %1$d hod. (do %2$s)</item>
+        <item quantity="one">Na hodinu (do %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Na %d min</item>
+        <item quantity="one">Na jednu minútu</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Na %d h</item>
+        <item quantity="one">Na 1 h</item>
+    </plurals>
 </resources>

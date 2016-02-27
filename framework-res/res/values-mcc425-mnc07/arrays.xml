@@ -6,6 +6,9 @@
         <item>7</item>
         <item>9</item>
     </integer-array>
+    <string-array name="config_tether_apndata">
+        <item>PC HOT mobile,pc.hotm,,,,,,,,,425,07,,DUN</item>
+    </string-array>
     <string-array name="config_operatorConsideredNonRoaming">
         <item>42503</item>
     </string-array>

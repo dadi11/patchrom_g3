@@ -1,12 +1,14 @@
-version: 2.0.0-RC4
-apkFileName: framework-res.apk
+version: 2.0.2
+apkFileName: framework-resapk
 isFrameworkApk: true
 sdkInfo:
-  minSdkVersion: '19'
-  targetSdkVersion: '19'
+  minSdkVersion: '22'
+  targetSdkVersion: '22'
 packageInfo:
   forced-package-id: '1'
 versionInfo:
-  versionCode: '19'
-  versionName: 4.4.4-eng.huqianwei.20150316.202629
-compressionType: false
+  versionCode: '22'
+  versionName: 5.1.1-eng.kjjjnob.20150928.225046
+sharedLibrary: false
+doNotCompress:
+- resources.arsc

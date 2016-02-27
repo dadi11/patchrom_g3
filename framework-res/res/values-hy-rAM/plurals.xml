@@ -99,4 +99,20 @@
         <item quantity="other">Կրկին փորձեք %d վայրկյանից</item>
         <item quantity="one">Կրկին փորձեք 1 վայրկյանից</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">%1$d րոպե (մինչև %2$s)</item>
+        <item quantity="one">Մեկ րոպե (մինչև %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">%1$d ժամ (մինչև %2$s)</item>
+        <item quantity="one">Մեկ ժամ (մինչև %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">%d րոպե</item>
+        <item quantity="one">Մեկ րոպե</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">%d ժամ</item>
+        <item quantity="one">Մեկ ժամ</item>
+    </plurals>
 </resources>

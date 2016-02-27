@@ -28,7 +28,7 @@
         <item quantity="one">kati ya sekunde 1</item>
     </plurals>
     <plurals name="in_num_minutes">
-        <item quantity="other">katika dakika %d</item>
+        <item quantity="other">baada ya dakika %d</item>
         <item quantity="one">"kati ya dakika  1"</item>
     </plurals>
     <plurals name="in_num_hours">
@@ -98,5 +98,21 @@
     <plurals name="restr_pin_countdown">
         <item quantity="other">Jaribu tena baada ya sekunde %d</item>
         <item quantity="one">Jaribu tena baada ya sekunde 1</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">Kwa dakika %1$d (hadi %2$s)</item>
+        <item quantity="one">Kwa dakika moja (hadi %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">Kwa saa %1$d (hadi %2$s)</item>
+        <item quantity="one">Kwa saa moja (hadi %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Kwa dakika %d</item>
+        <item quantity="one">Kwa dakika moja</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Kwa saa %d</item>
+        <item quantity="one">Kwa saa moja</item>
     </plurals>
 </resources>

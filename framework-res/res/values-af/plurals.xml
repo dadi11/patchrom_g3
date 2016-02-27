@@ -99,4 +99,20 @@
         <item quantity="other">Probeer weer oor %d sekondes</item>
         <item quantity="one">Probeer weer oor 1 sekonde</item>
     </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">Vir %1$d minute (tot %2$s)</item>
+        <item quantity="one">Vir een minuut (tot %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">Vir %1$d ure (tot %2$s)</item>
+        <item quantity="one">Vir een uur (tot %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">%d minute lank</item>
+        <item quantity="one">Een minuut lank</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">%d uur lank</item>
+        <item quantity="one">Een uur lank</item>
+    </plurals>
 </resources>

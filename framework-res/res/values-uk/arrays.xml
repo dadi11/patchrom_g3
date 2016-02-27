@@ -4,7 +4,7 @@
         <item>Дом.</item>
         <item>Роб.</item>
         <item>Інше</item>
-        <item>Спеціал.</item>
+        <item>Указати</item>
     </string-array>
     <string-array name="imProtocols">
         <item>AIM</item>
@@ -19,7 +19,7 @@
     <string-array name="organizationTypes">
         <item>Роб.</item>
         <item>Інше</item>
-        <item>Спеціал.</item>
+        <item>Указати</item>
     </string-array>
     <string-array name="phoneTypes">
         <item>Дом.</item>
@@ -29,18 +29,18 @@
         <item>Дом. факс</item>
         <item>Пейджер</item>
         <item>Інше</item>
-        <item>Спеціал.</item>
+        <item>Указати</item>
     </string-array>
     <string-array name="postalAddressTypes">
         <item>Дом.</item>
         <item>Роб.</item>
         <item>Інше</item>
-        <item>Спеціал.</item>
+        <item>Указати</item>
     </string-array>
     <string-array name="imAddressTypes">
         <item>Дом.</item>
         <item>Роб.</item>
         <item>Інше</item>
-        <item>Спеціал.</item>
+        <item>Указати</item>
     </string-array>
 </resources>
