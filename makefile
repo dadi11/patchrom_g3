@@ -45,6 +45,3 @@ local-after-zip:=
 # deliver the zip file to phone, or to customize other actions
 
 include $(PORT_BUILD)/porting.mk
-
-adjust_apps_location:
-	-mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
