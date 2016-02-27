@@ -1,12 +1,12 @@
 #
-# Makefile for nexus5
+# Makefile for G3
 #
 
 # The original zip file, MUST be specified by each product
 local-zip-file     := stockrom.zip
 
 # The output zip file of MIUI rom, the default is porting_miui.zip if not specified
-local-out-zip-file := MIUI_nexus5.zip
+local-out-zip-file := MIUI_G3.zip
 
 # the location for local-ota to save target-file
 local-previous-target-dir := 
