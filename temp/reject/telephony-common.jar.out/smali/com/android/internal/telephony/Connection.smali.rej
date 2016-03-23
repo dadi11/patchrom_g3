@@ -1,0 +1,26 @@
+*** Connection.smali	2016-03-23 22:37:00.147329364 +0100
+--- Connection.smali	2016-03-23 22:33:55.239329364 +0100
+***************
+*** 232,237 ****
+      return v0
+  .end method
+  
+  .method public abstract isIncoming()Z
+  .end method
+  
+--- 280,294 ----
+      return v0
+  .end method
+  
++ .method public isForwarded()Z
++     .locals 1
++ 
++     .prologue
++     const/4 v0, 0x0
++ 
++     return v0
++ .end method
++ 
+  .method public abstract isIncoming()Z
+  .end method
+  

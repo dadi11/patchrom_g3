@@ -38,6 +38,8 @@
 
 .field public static final SECURITY_PATCH:Ljava/lang/String;
 
+.field public static final SECURITY_PATCH:Ljava/lang/String;
+
 
 # direct methods
 .method static constructor <clinit>()V

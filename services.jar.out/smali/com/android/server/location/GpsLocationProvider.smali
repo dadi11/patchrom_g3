@@ -7639,6 +7639,15 @@
     throw v0
 .end method
 
+.method getClientSource()Landroid/os/WorkSource;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/location/GpsLocationProvider;->mClientSource:Landroid/os/WorkSource;
+
+    return-object v0
+.end method
+
 .method public getGpsGeofenceProxy()Landroid/location/IGpsGeofenceHardware;
     .locals 1
 
@@ -7687,6 +7696,15 @@
     const-string v0, "gps"
 
     return-object v0
+.end method
+
+.method getNavigating()Z
+    .locals 1
+
+    .prologue
+    iget-boolean v0, p0, Lcom/android/server/location/GpsLocationProvider;->mNavigating:Z
+
+    return v0
 .end method
 
 .method public getNetInitiatedListener()Landroid/location/INetInitiatedListener;

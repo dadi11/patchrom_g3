@@ -84,6 +84,8 @@
 
 .field private mRemoteVideoCapable:Z
 
+.field private mFirewallCode:I
+
 .field mUserData:Ljava/lang/Object;
 
 .field private mVideoProvider:Landroid/telecom/Connection$VideoProvider;
@@ -100,6 +102,10 @@
     const-string v0, "Connection"
 
     sput-object v0, Lcom/android/internal/telephony/Connection;->LOG_TAG:Ljava/lang/String;
+
+    const/4 v0, 0x0
+
+    iput v0, p0, Lcom/android/internal/telephony/Connection;->mFirewallCode:I
 
     return-void
 .end method
@@ -333,6 +339,15 @@
     goto :goto_0
 .end method
 
+.method public getFirewallCode()I
+    .locals 1
+
+    .prologue
+    iget v0, p0, Lcom/android/internal/telephony/Connection;->mFirewallCode:I
+
+    return v0
+.end method
+
 .method public abstract getHoldDurationMillis()J
 .end method
 
@@ -376,6 +391,39 @@
 .end method
 
 .method public abstract getRemainingPostDialString()Ljava/lang/String;
+.end method
+
+.method public getRingDurationMillis()J
+    .locals 6
+
+    .prologue
+    invoke-virtual {p0}, Lcom/android/internal/telephony/Connection;->getCreateTime()J
+
+    move-result-wide v2
+
+    .local v2, "createTime":J
+    invoke-virtual {p0}, Lcom/android/internal/telephony/Connection;->getConnectTime()J
+
+    move-result-wide v0
+
+    .local v0, "connectionTime":J
+    cmp-long v4, v0, v2
+
+    if-lez v4, :cond_0
+
+    sub-long v4, v0, v2
+
+    :goto_0
+    return-wide v4
+
+    :cond_0
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v4
+
+    sub-long/2addr v4, v2
+
+    goto :goto_0
 .end method
 
 .method public getState()Lcom/android/internal/telephony/Call$State;
@@ -840,6 +888,16 @@
     .line 581
     .end local v1    # "l":Lcom/android/internal/telephony/Connection$Listener;
     :cond_0
+    return-void
+.end method
+
+.method public setFirewallCode(I)V
+    .locals 0
+    .param p1, "firewallCode"    # I
+
+    .prologue
+    iput p1, p0, Lcom/android/internal/telephony/Connection;->mFirewallCode:I
+
     return-void
 .end method
 

@@ -1,0 +1,64 @@
+*** WindowManagerService.smali	2016-03-23 22:37:10.959329364 +0100
+--- WindowManagerService.smali	2016-03-23 22:34:05.959329364 +0100
+***************
+*** 6058,6063 ****
+  
+      invoke-virtual {v0, v1}, Lcom/android/server/wm/WindowStateAnimator;->setSurfaceBoundariesLocked(Z)V
+  
+      iget-object v0, v3, Lcom/android/server/wm/WindowState;->mAppToken:Lcom/android/server/wm/AppWindowToken;
+  
+      move-object/from16 v19, v0
+--- 6062,6086 ----
+  
+      invoke-virtual {v0, v1}, Lcom/android/server/wm/WindowStateAnimator;->setSurfaceBoundariesLocked(Z)V
+  
++     iget-object v2, v3, Lcom/android/server/wm/WindowState;->mAttrs:Landroid/view/WindowManager$LayoutParams;
++ 
++     iget v2, v2, Landroid/view/WindowManager$LayoutParams;->flags:I
++ 
++     and-int/lit8 v2, v2, 0x4
++ 
++     if-eqz v2, :cond_miui_0
++ 
++     move-object/from16 v0, v52
++ 
++     iget-object v2, v0, Lcom/android/server/wm/WindowStateAnimator;->mSurfaceControl:Landroid/view/SurfaceControl;
++ 
++     const/16 v8, 0x80
++ 
++     const/16 v9, 0x80
++ 
++     invoke-virtual {v2, v8, v9}, Landroid/view/SurfaceControl;->setFlags(II)V
++ 
++     :goto_miui_0
+      iget-object v0, v3, Lcom/android/server/wm/WindowState;->mAppToken:Lcom/android/server/wm/AppWindowToken;
+  
+      move-object/from16 v19, v0
+***************
+*** 6826,6831 ****
+  
+      goto/16 :goto_8
+  
+      .restart local v19    # "atoken":Lcom/android/server/wm/AppWindowToken;
+      .restart local v20    # "committed":Z
+      .restart local v44    # "obscuredChanged":Z
+--- 6849,6867 ----
+  
+      goto/16 :goto_8
+  
++     :cond_miui_0
++     move-object/from16 v0, v52
++ 
++     iget-object v2, v0, Lcom/android/server/wm/WindowStateAnimator;->mSurfaceControl:Landroid/view/SurfaceControl;
++ 
++     const/4 v8, 0x0
++ 
++     const/16 v9, 0x80
++ 
++     invoke-virtual {v2, v8, v9}, Landroid/view/SurfaceControl;->setFlags(II)V
++     
++     goto :goto_miui_0
++ 
+      .restart local v19    # "atoken":Lcom/android/server/wm/AppWindowToken;
+      .restart local v20    # "committed":Z
+      .restart local v44    # "obscuredChanged":Z

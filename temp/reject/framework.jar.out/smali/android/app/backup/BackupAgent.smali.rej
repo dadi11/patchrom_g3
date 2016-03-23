@@ -1,0 +1,21 @@
+*** BackupAgent.smali	2016-03-23 22:37:25.027329364 +0100
+--- BackupAgent.smali	2016-03-23 22:34:20.707329364 +0100
+***************
+*** 601,607 ****
+  
+      iget v1, v0, Llibcore/io/StructStat;->st_mode:I
+  
+!     invoke-static {v1}, Llibcore/io/OsConstants;->S_ISLNK(I)Z
+  
+      move-result v1
+  
+--- 629,637 ----
+  
+      iget v1, v0, Llibcore/io/StructStat;->st_mode:I
+  
+!     move-object/from16 v0, p0
+! 
+!     invoke-direct {v0, v1}, Landroid/app/backup/BackupAgent;->shouldSkip(I)Z
+  
+      move-result v1
+  

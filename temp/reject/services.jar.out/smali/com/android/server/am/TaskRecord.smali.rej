@@ -1,0 +1,19 @@
+*** TaskRecord.smali	2016-03-23 22:37:11.791329364 +0100
+--- TaskRecord.smali	2016-03-23 22:34:06.767329364 +0100
+***************
+*** 1411,1416 ****
+  
+      .end local v3    # "r":Lcom/android/server/am/ActivityRecord;
+      :cond_2
+      return-void
+  .end method
+  
+--- 1480,1487 ----
+  
+      .end local v3    # "r":Lcom/android/server/am/ActivityRecord;
+      :cond_2
++     invoke-direct {p0, v1, v2}, Lcom/android/server/am/TaskRecord;->setFrontOfTask_After(ZI)V
++ 
+      return-void
+  .end method
+  

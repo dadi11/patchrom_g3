@@ -1,0 +1,41 @@
+*** IConnectivityManager.smali	2016-03-23 22:37:32.195329364 +0100
+--- IConnectivityManager.smali	2016-03-23 22:34:27.859329364 +0100
+***************
+*** 447,456 ****
+      .end annotation
+  .end method
+  
+  .method public abstract stopUsingNetworkFeature(ILjava/lang/String;)I
+      .annotation system Ldalvik/annotation/Throws;
+          value = {
+              Landroid/os/RemoteException;
+          }
+      .end annotation
+  .end method
+--- 447,472 ----
+      .end annotation
+  .end method
+  
++ .method public abstract startUsingNetworkFeatureMSim(ILjava/lang/String;Landroid/os/IBinder;I)I
++     .annotation system Ldalvik/annotation/Throws;
++         value = {
++             Landroid/os/RemoteException;
++         }
++     .end annotation
++ .end method
++ 
+  .method public abstract stopUsingNetworkFeature(ILjava/lang/String;)I
+      .annotation system Ldalvik/annotation/Throws;
+          value = {
+              Landroid/os/RemoteException;
++         }
++     .end annotation
++ .end method
++ 
++ .method public abstract stopUsingNetworkFeatureMSim(ILjava/lang/String;I)I
++     .annotation system Ldalvik/annotation/Throws;
++         value = {
++             Landroid/os/RemoteException;
+          }
+      .end annotation
+  .end method

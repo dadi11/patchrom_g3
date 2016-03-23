@@ -1462,6 +1462,82 @@
     goto :goto_1
 .end method
 
+.method private doUnmountCIFS(Ljava/lang/String;)I
+    .locals 9
+    .param p1, "mountPoint"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v3, 0x0
+
+    const/4 v2, -0x1
+
+    if-nez p1, :cond_1
+
+    const-string v3, "MountService"
+
+    const-string v4, "invalid argument"
+
+    invoke-static {v3, v4}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_0
+    :goto_0
+    return v2
+
+    :cond_1
+    :try_start_0
+    iget-object v4, p0, Lcom/android/server/MountService;->mConnector:Lcom/android/server/NativeDaemonConnector;
+
+    const-string v5, "cifs"
+
+    const/4 v6, 0x2
+
+    new-array v6, v6, [Ljava/lang/Object;
+
+    const/4 v7, 0x0
+
+    const-string v8, "unmount"
+
+    aput-object v8, v6, v7
+
+    const/4 v7, 0x1
+
+    aput-object p1, v6, v7
+
+    invoke-virtual {v4, v5, v6}, Lcom/android/server/NativeDaemonConnector;->execute(Ljava/lang/String;[Ljava/lang/Object;)Lcom/android/server/NativeDaemonEvent;
+    :try_end_0
+    .catch Lcom/android/server/NativeDaemonConnectorException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move v2, v3
+
+    goto :goto_0
+
+    :catch_0
+    move-exception v1
+
+    .local v1, "e":Lcom/android/server/NativeDaemonConnectorException;
+    invoke-virtual {v1}, Lcom/android/server/NativeDaemonConnectorException;->getCode()I
+
+    move-result v0
+
+    .local v0, "code":I
+    const/16 v3, 0x194
+
+    if-ne v0, v3, :cond_2
+
+    const/4 v2, -0x5
+
+    goto :goto_0
+
+    :cond_2
+    const/16 v3, 0x195
+
+    if-ne v0, v3, :cond_0
+
+    const/4 v2, -0x7
+
+    goto :goto_0
+.end method
+
 .method private doUnmountVolume(Ljava/lang/String;ZZ)I
     .locals 9
     .param p1, "path"    # Ljava/lang/String;
@@ -6478,6 +6554,29 @@
     return-void
 .end method
 
+.method public mountCIFS(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    .locals 1
+    .param p1, "ip"    # Ljava/lang/String;
+    .param p2, "user"    # Ljava/lang/String;
+    .param p3, "password"    # Ljava/lang/String;
+    .param p4, "remotepath"    # Ljava/lang/String;
+    .param p5, "localpath"    # Ljava/lang/String;
+    .param p6, "options"    # Ljava/lang/String;
+
+    .prologue
+    const-string v0, "android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+
+    invoke-direct {p0, v0}, Lcom/android/server/MountService;->validatePermission(Ljava/lang/String;)V
+
+    invoke-direct {p0}, Lcom/android/server/MountService;->waitForReady()V
+
+    invoke-direct/range {p0 .. p6}, Lcom/android/server/MountService;->doMountCIFS(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result v0
+
+    return v0
+.end method
+
 .method public mountObb(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/os/storage/IObbActionListener;I)V
     .locals 8
     .param p1, "rawPath"    # Ljava/lang/String;
@@ -9006,6 +9105,24 @@
 
     .line 1532
     return-void
+.end method
+
+.method public unmountCIFS(Ljava/lang/String;)I
+    .locals 1
+    .param p1, "mountPoint"    # Ljava/lang/String;
+
+    .prologue
+    const-string v0, "android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+
+    invoke-direct {p0, v0}, Lcom/android/server/MountService;->validatePermission(Ljava/lang/String;)V
+
+    invoke-direct {p0}, Lcom/android/server/MountService;->waitForReady()V
+
+    invoke-direct {p0, p1}, Lcom/android/server/MountService;->doUnmountCIFS(Ljava/lang/String;)I
+
+    move-result v0
+
+    return v0
 .end method
 
 .method public unmountObb(Ljava/lang/String;ZLandroid/os/storage/IObbActionListener;I)V

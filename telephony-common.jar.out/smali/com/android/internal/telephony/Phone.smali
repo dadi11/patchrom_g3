@@ -679,6 +679,9 @@
 .method public abstract getModemStringItem(ILandroid/os/Message;)V
 .end method
 
+.method public abstract getMiuiIccPhoneBookInterfaceManager()Lcom/android/internal/telephony/MiuiIccPhoneBookInterfaceManager;
+.end method
+
 .method public abstract getMsisdn()Ljava/lang/String;
 .end method
 

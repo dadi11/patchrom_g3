@@ -8237,6 +8237,16 @@
     goto :goto_1
 .end method
 
+.method public setContext(Landroid/content/Context;)V
+    .locals 0
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    iput-object p1, p0, Landroid/telephony/TelephonyManager;->mContext:Landroid/content/Context;
+
+    return-void
+.end method
+
 .method public setRadio(Z)Z
     .locals 3
     .param p1, "turnOn"    # Z
@@ -8770,4 +8780,43 @@
     invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0
+.end method
+
+.method public static from(Landroid/content/Context;I)Landroid/telephony/TelephonyManager;
+    .locals 1
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "slotId"    # I
+
+    .prologue
+    invoke-static {p0}, Landroid/telephony/TelephonyManager;->from(Landroid/content/Context;)Landroid/telephony/TelephonyManager;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public static getDefault(I)Landroid/telephony/TelephonyManager;
+    .locals 1
+    .param p0, "slotId"    # I
+
+    .prologue
+    sget-object v0, Landroid/telephony/TelephonyManager;->sInstance:Landroid/telephony/TelephonyManager;
+
+    return-object v0
+.end method
+
+.method public setDefaultDataSlotId(I)V
+    .locals 0
+    .param p1, "slotId"    # I
+
+    .prologue
+    return-void
+.end method
+
+.method public setDefaultVoiceSlotId(I)V
+    .locals 0
+    .param p1, "slotId"    # I
+
+    .prologue
+    return-void
 .end method

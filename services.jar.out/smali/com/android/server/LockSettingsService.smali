@@ -1458,13 +1458,15 @@
 
     move-result-object v2
 
-    .line 425
     .local v2, "hash":[B
-    invoke-static {v6, v2}, Ljava/util/Arrays;->equals([B[B)Z
+    invoke-static {v6, v2}, Lcom/android/server/LockSettingsService$Injector;->passwordToHash([B[B)[B
+
+    move-result-object v8
+
+    invoke-static {v6, v8}, Ljava/util/Arrays;->equals([B[B)Z
 
     move-result v4
 
-    .line 426
     .local v4, "matched":Z
     if-eqz v4, :cond_0
 
@@ -2616,6 +2618,28 @@
     invoke-direct {p0, p1, v0, p4}, Lcom/android/server/LockSettingsService;->writeToDb(Ljava/lang/String;Ljava/lang/String;I)V
 
     .line 232
+    return-void
+.end method
+
+.method public setRawLockPassword([BI)V
+    .locals 1
+    .param p1, "hash"    # [B
+    .param p2, "userId"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    invoke-direct {p0, p2}, Lcom/android/server/LockSettingsService;->checkWritePermission(I)V
+
+    invoke-direct {p0, p2}, Lcom/android/server/LockSettingsService;->getLockPasswordFilename(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {p0, v0, p1}, Lcom/android/server/LockSettingsService;->writeFile(Ljava/lang/String;[B)V
+
     return-void
 .end method
 

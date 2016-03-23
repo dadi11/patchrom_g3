@@ -75,6 +75,8 @@
 
 .field protected mMailboxIndex:I
 
+.field protected mMiuiAdnCache:Lcom/android/internal/telephony/uicc/MiuiAdnRecordCache;
+
 .field protected mMncLength:I
 
 .field protected mMsisdn:Ljava/lang/String;
@@ -1639,6 +1641,15 @@
     return-object v0
 .end method
 
+.method public getMiuiAdnCache()Lcom/android/internal/telephony/uicc/MiuiAdnRecordCache;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/telephony/uicc/IccRecords;->mMiuiAdnCache:Lcom/android/internal/telephony/uicc/MiuiAdnRecordCache;
+
+    return-object v0
+.end method
+
 .method public getMsisdnAlphaTag()Ljava/lang/String;
     .locals 1
 
@@ -2626,15 +2637,16 @@
     .locals 3
 
     .prologue
-    .line 491
     iget-object v1, p0, Lcom/android/internal/telephony/uicc/IccRecords;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->reset()V
 
-    .line 492
+    iget-object v0, p0, Lcom/android/internal/telephony/uicc/IccRecords;->mMiuiAdnCache:Lcom/android/internal/telephony/uicc/MiuiAdnRecordCache;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/uicc/MiuiAdnRecordCache;->reset()V
+
     iget-object v0, p0, Lcom/android/internal/telephony/uicc/IccRecords;->mParentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
-    .line 493
     .local v0, "parentApp":Lcom/android/internal/telephony/uicc/UiccCardApplication;
     if-eqz v0, :cond_0
 
@@ -3515,5 +3527,40 @@
     invoke-virtual {v0, p1}, Landroid/os/RegistrantList;->remove(Landroid/os/Handler;)V
 
     .line 265
+    return-void
+.end method
+
+.method protected setSystemProperty(Ljava/lang/String;Ljava/lang/String;)V
+    .locals 2
+    .param p1, "property"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/String;
+
+    .prologue
+    invoke-static {}, Lcom/android/internal/telephony/PhoneFactory;->getDefaultPhone()Lcom/android/internal/telephony/Phone;
+
+    move-result-object v0
+
+    .local v0, "phone":Lcom/android/internal/telephony/Phone;
+    :goto_0
+    instance-of v1, v0, Lcom/android/internal/telephony/PhoneProxy;
+
+    if-eqz v1, :cond_0
+
+    check-cast v0, Lcom/android/internal/telephony/PhoneProxy;
+
+    .end local v0    # "phone":Lcom/android/internal/telephony/Phone;
+    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneProxy;->getActivePhone()Lcom/android/internal/telephony/Phone;
+
+    move-result-object v0
+
+    .restart local v0    # "phone":Lcom/android/internal/telephony/Phone;
+    goto :goto_0
+
+    :cond_0
+    check-cast v0, Lcom/android/internal/telephony/PhoneBase;
+
+    .end local v0    # "phone":Lcom/android/internal/telephony/Phone;
+    invoke-virtual {v0, p1, p2}, Lcom/android/internal/telephony/PhoneBase;->setSystemProperty(Ljava/lang/String;Ljava/lang/String;)V
+
     return-void
 .end method

@@ -153,56 +153,55 @@
     # setter for: Landroid/net/wifi/WifiInfo;->mMeteredHint:Z
     invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access$302(Landroid/net/wifi/WifiInfo;Z)Z
 
-    .line 579
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Landroid/net/wifi/WifiInfo;->score:I
 
-    .line 580
     invoke-virtual {p1}, Landroid/os/Parcel;->readDouble()D
 
     move-result-wide v2
 
     iput-wide v2, v0, Landroid/net/wifi/WifiInfo;->txSuccessRate:D
 
-    .line 581
     invoke-virtual {p1}, Landroid/os/Parcel;->readDouble()D
 
     move-result-wide v2
 
     iput-wide v2, v0, Landroid/net/wifi/WifiInfo;->txRetriesRate:D
 
-    .line 582
     invoke-virtual {p1}, Landroid/os/Parcel;->readDouble()D
 
     move-result-wide v2
 
     iput-wide v2, v0, Landroid/net/wifi/WifiInfo;->txBadRate:D
 
-    .line 583
     invoke-virtual {p1}, Landroid/os/Parcel;->readDouble()D
 
     move-result-wide v2
 
     iput-wide v2, v0, Landroid/net/wifi/WifiInfo;->rxSuccessRate:D
 
-    .line 584
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Landroid/net/wifi/WifiInfo;->badRssiCount:I
 
-    .line 585
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Landroid/net/wifi/WifiInfo;->lowRssiCount:I
 
-    .line 586
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    # setter for: Landroid/net/wifi/WifiInfo;->mVendorInfo:Ljava/lang/String;
+    invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access_mVendorInfo(Landroid/net/wifi/WifiInfo;Ljava/lang/String;)Ljava/lang/String;
+
     sget-object v1, Landroid/net/wifi/SupplicantState;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v1, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;

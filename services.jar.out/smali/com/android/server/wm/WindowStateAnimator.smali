@@ -5657,47 +5657,43 @@
 
     if-eqz v11, :cond_7
 
-    .line 1361
     iget v9, v8, Lcom/android/server/wm/WindowState;->mRequestedWidth:I
 
-    .line 1362
     .local v9, "width":I
     iget v2, v8, Lcom/android/server/wm/WindowState;->mRequestedHeight:I
 
-    .line 1370
     .local v2, "height":I
     :goto_0
     if-ge v9, v10, :cond_0
 
-    .line 1371
     const/4 v9, 0x1
 
-    .line 1373
     :cond_0
     if-ge v2, v10, :cond_1
 
-    .line 1374
     const/4 v2, 0x1
 
-    .line 1377
+    iget v3, p0, Lcom/android/server/wm/WindowStateAnimator;->mAttrType:I
+
+    const/16 v4, 0x7dd
+
+    if-eq v3, v4, :cond_2
+
     :cond_1
     iget-object v11, v8, Lcom/android/server/wm/WindowState;->mShownFrame:Landroid/graphics/RectF;
 
     iget v3, v11, Landroid/graphics/RectF;->left:F
 
-    .line 1378
     .local v3, "left":F
     iget-object v11, v8, Lcom/android/server/wm/WindowState;->mShownFrame:Landroid/graphics/RectF;
 
     iget v7, v11, Landroid/graphics/RectF;->top:F
 
-    .line 1381
     .local v7, "top":F
     invoke-virtual {v8}, Lcom/android/server/wm/WindowState;->getAttrs()Landroid/view/WindowManager$LayoutParams;
 
     move-result-object v0
 
-    .line 1382
     .local v0, "attrs":Landroid/view/WindowManager$LayoutParams;
     iget-object v11, v0, Landroid/view/WindowManager$LayoutParams;->surfaceInsets:Landroid/graphics/Rect;
 

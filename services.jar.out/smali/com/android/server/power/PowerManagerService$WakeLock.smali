@@ -369,6 +369,17 @@
 
     move-result-object v0
 
+    iget-boolean v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mDisabled:Z
+
+    if-eqz v1, :cond_miui_0
+
+    const-string v1, " DISABLED"
+
+    :goto_miui_0
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
     const-string v1, " (uid="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -434,6 +445,11 @@
     move-result-object v0
 
     return-object v0
+
+    :cond_miui_0
+    const-string v1, ""
+
+    goto :goto_miui_0
 .end method
 
 .method public updateProperties(ILjava/lang/String;Ljava/lang/String;Landroid/os/WorkSource;Ljava/lang/String;II)V

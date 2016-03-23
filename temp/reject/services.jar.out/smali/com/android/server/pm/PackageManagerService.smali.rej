@@ -1,0 +1,215 @@
+*** PackageManagerService.smali	2016-03-23 22:37:10.427329364 +0100
+--- PackageManagerService.smali	2016-03-23 22:34:05.447329364 +0100
+***************
+*** 1618,1623 ****
+  
+      move-result-object v2
+  
+      const-string v3, "/core-libart.jar"
+  
+      invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+--- 1626,1655 ----
+  
+      move-result-object v2
+  
++     const-string v3, "/framework-miui-res.apk"
++ 
++     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
++ 
++     move-result-object v2
++ 
++     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
++ 
++     move-result-object v2
++ 
++     invoke-virtual {v8, v2}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
++ 
++     new-instance v2, Ljava/lang/StringBuilder;
++ 
++     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
++ 
++     invoke-virtual/range {v23 .. v23}, Ljava/io/File;->getPath()Ljava/lang/String;
++ 
++     move-result-object v3
++ 
++     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
++ 
++     move-result-object v2
++ 
+      const-string v3, "/core-libart.jar"
+  
+      invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+***************
+*** 10016,10021 ****
+  
+      .local v0, "allowed":Z
+      :goto_0
+      if-nez v0, :cond_1
+  
+      iget v4, p3, Lcom/android/server/pm/BasePermission;->protectionLevel:I
+--- 10060,10073 ----
+  
+      .local v0, "allowed":Z
+      :goto_0
++     iget-object v4, p2, Landroid/content/pm/PackageParser$Package;->mSignatures:[Landroid/content/pm/Signature;
++ 
++     invoke-static {v4}, Lmiui/content/pm/ExtraPackageManager;->isTrustedSystemSignature([Landroid/content/pm/Signature;)Z
++ 
++     move-result v4
++ 
++     or-int/2addr v0, v4
++ 
+      if-nez v0, :cond_1
+  
+      iget v4, p3, Lcom/android/server/pm/BasePermission;->protectionLevel:I
+***************
+*** 15907,15912 ****
+  
+      .restart local p1    # "pkg":Landroid/content/pm/PackageParser$Package;
+      :cond_1
+      and-int/lit8 v3, p2, 0x1
+  
+      if-eqz v3, :cond_2
+--- 15969,15993 ----
+  
+      .restart local p1    # "pkg":Landroid/content/pm/PackageParser$Package;
+      :cond_1
++     const-string v3, "install"
++ 
++     move-object/from16 v0, p0
++ 
++     move-object/from16 v1, p1
++ 
++     move-object/from16 v2, v58
++ 
++     invoke-direct {v0, v1, v2, v3}, Lcom/android/server/pm/PackageManagerService;->tryIgnorePackage(Landroid/content/pm/PackageParser$Package;Ljava/io/File;Ljava/lang/String;)Z
++ 
++     move-result v3
++ 
++     if-eqz v3, :cond_miui_20
++ 
++     const/16 p1, 0x0
++ 
++     return-object p1
++ 
++     :cond_miui_20
+      and-int/lit8 v3, p2, 0x1
+  
+      if-eqz v3, :cond_2
+***************
+*** 16363,16373 ****
+  
+      and-int/lit8 v3, p2, 0x40
+  
+      if-nez v3, :cond_b
+  
+      const/4 v3, 0x0
+  
+-     :try_start_2
+      move-object/from16 v0, p0
+  
+      move-object/from16 v1, p1
+--- 16444,16465 ----
+  
+      and-int/lit8 v3, p2, 0x40
+  
++     if-eqz v3, :cond_miui_0
++ 
++     move/from16 v0, p3
++ 
++     and-int/lit16 v3, v0, 0x100
++ 
+      if-nez v3, :cond_b
+  
++     :try_start_2
++     sget-boolean v3, Landroid/os/Build;->IS_DEBUGGABLE:Z
++ 
++     if-eqz v3, :cond_b
++ 
++     :cond_miui_0
+      const/4 v3, 0x0
+  
+      move-object/from16 v0, p0
+  
+      move-object/from16 v1, p1
+***************
+*** 21438,21443 ****
+      return-object v21
+  
+      :cond_1
+      const/4 v5, 0x0
+  
+      .local v5, "ps":Lcom/android/server/pm/PackageSetting;
+--- 21543,21565 ----
+      return-object v21
+  
+      :cond_1
++     const-string v3, "boot scanning"
++ 
++     move-object/from16 v0, p0
++ 
++     move-object/from16 v1, p1
++ 
++     invoke-direct {v0, v6, v1, v3}, Lcom/android/server/pm/PackageManagerService;->tryIgnorePackage(Landroid/content/pm/PackageParser$Package;Ljava/io/File;Ljava/lang/String;)Z
++ 
++     move-result v3
++ 
++     if-eqz v3, :cond_miui_20
++ 
++     const/16 v3, 0x0
++ 
++     return-object v3
++ 
++     :cond_miui_20
+      const/4 v5, 0x0
+  
+      .local v5, "ps":Lcom/android/server/pm/PackageSetting;
+***************
+*** 28077,28086 ****
+      :try_end_0
+      .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+  
+      :goto_0
+      return-void
+  
+      :cond_1
+      iget-object v7, p0, Lcom/android/server/pm/PackageManagerService;->mHandler:Lcom/android/server/pm/PackageManagerService$PackageHandler;
+  
+      new-instance v0, Lcom/android/server/pm/PackageManagerService$7;
+--- 28329,28345 ----
+      :try_end_0
+      .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+  
++     :cond_miui_0
+      :goto_0
+      return-void
+  
+      :cond_1
++     invoke-direct {p0, p1, p2}, Lcom/android/server/pm/MiuiPackageManagerService;->protectAppFromDeleting(Lcom/android/server/pm/PackageManagerService;Ljava/lang/String;Landroid/content/pm/IPackageDeleteObserver;)Z
++ 
++     move-result v0
++ 
++     if-nez v0, :cond_miui_0
++ 
+      iget-object v7, p0, Lcom/android/server/pm/PackageManagerService;->mHandler:Lcom/android/server/pm/PackageManagerService$PackageHandler;
+  
+      new-instance v0, Lcom/android/server/pm/PackageManagerService$7;
+***************
+*** 40680,40685 ****
+      :goto_0
+      invoke-static {v0}, Landroid/content/pm/PackageParser;->setCompatibilityModeEnabled(Z)V
+  
+      iget-object v8, p0, Lcom/android/server/pm/PackageManagerService;->mPackages:Ljava/util/HashMap;
+  
+      monitor-enter v8
+--- 40974,40983 ----
+      :goto_0
+      invoke-static {v0}, Landroid/content/pm/PackageParser;->setCompatibilityModeEnabled(Z)V
+  
++     iget-object v7, p0, Lcom/android/server/pm/PackageManagerService;->mContext:Landroid/content/Context;
++ 
++     invoke-static {v7}, Lcom/android/server/pm/MiuiPackageManagerService;->initExtraGuard(Landroid/content/Context;)V
++ 
+      iget-object v8, p0, Lcom/android/server/pm/PackageManagerService;->mPackages:Ljava/util/HashMap;
+  
+      monitor-enter v8

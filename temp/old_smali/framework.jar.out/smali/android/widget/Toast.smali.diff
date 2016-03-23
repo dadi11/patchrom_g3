@@ -1,0 +1,47 @@
+*** ./smali/android/widget/Toast.smali	2016-03-23 22:37:22.331329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/framework.jar.out/./smali/android/widget/Toast.smali	2016-03-23 22:34:16.963329364 +0100
+***************
+*** 405,410 ****
+--- 405,426 ----
+      return-void
+  .end method
+  
++ .method public setType(I)V
++     .locals 1
++     .param p1, "type"    # I
++ 
++     .prologue
++     iget-object v0, p0, Landroid/widget/Toast;->mTN:Landroid/widget/Toast$TN;
++ 
++     invoke-virtual {v0}, Landroid/widget/Toast$TN;->getParams()Landroid/view/WindowManager$LayoutParams;
++ 
++     move-result-object v0
++ 
++     iput p1, v0, Landroid/view/WindowManager$LayoutParams;->type:I
++ 
++     return-void
++ .end method
++ 
+  .method public setView(Landroid/view/View;)V
+      .locals 0
+      .param p1, "view"    # Landroid/view/View;
+***************
+*** 419,424 ****
+--- 435,451 ----
+      .locals 5
+  
+      .prologue
++     iget-object v3, p0, Landroid/widget/Toast;->mContext:Landroid/content/Context;
++ 
++     invoke-static {p0, v3}, Landroid/widget/ToastInjector;->interceptBackgroundToast(Landroid/widget/Toast;Landroid/content/Context;)Z
++ 
++     move-result v3
++ 
++     if-nez v3, :cond_miui
++ 
++     return-void
++ 
++     :cond_miui
+      iget-object v3, p0, Landroid/widget/Toast;->mNextView:Landroid/view/View;
+  
+      if-nez v3, :cond_0

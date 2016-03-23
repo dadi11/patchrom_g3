@@ -1,0 +1,156 @@
+*** ActivityManagerService.smali	2016-03-23 22:37:12.047329364 +0100
+--- ActivityManagerService.smali	2016-03-23 22:34:07.019329364 +0100
+***************
+*** 3268,3273 ****
+  
+      move-object/from16 v0, p0
+  
+      iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
+  
+      iget v5, v5, Lcom/android/server/am/BackupRecord;->backupMode:I
+--- 3270,3291 ----
+  
+      move-object/from16 v0, p0
+  
++     iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
++ 
++     move-object/from16 v0, p0
++ 
++     iget-object v9, v0, Lcom/android/server/am/ActivityManagerService;->mBackupAppName:Ljava/lang/String;
++ 
++     move-object/from16 v0, v25
++ 
++     invoke-static {v5, v9, v0}, Lcom/android/server/am/ActivityManagerServiceInjector;->isStartWithBackupRestriction(Landroid/content/Context;Ljava/lang/String;Lcom/android/server/am/ProcessRecord;)Z
++ 
++     move-result v5
++ 
++     if-eqz v5, :cond_a
++ 
++     move-object/from16 v0, p0
++ 
+      iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
+  
+      iget v5, v5, Lcom/android/server/am/BackupRecord;->backupMode:I
+***************
+*** 3848,3853 ****
+  
+      .end local p3    # "intent":Landroid/content/Intent;
+      .local v15, "intent":Landroid/content/Intent;
+      const/16 v3, 0x10
+  
+      invoke-virtual {v15, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+--- 3866,3875 ----
+  
+      .end local p3    # "intent":Landroid/content/Intent;
+      .local v15, "intent":Landroid/content/Intent;
++     move-object/from16 v0, p2
++ 
++     invoke-virtual {v15, v0}, Landroid/content/Intent;->setSender(Ljava/lang/String;)V
++ 
+      const/16 v3, 0x10
+  
+      invoke-virtual {v15, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+***************
+*** 10857,10862 ****
+  
+      invoke-virtual {v12, v3, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  
+      iput-object v12, v15, Landroid/os/Message;->obj:Ljava/lang/Object;
+  
+      move-object/from16 v0, p0
+--- 10879,10890 ----
+  
+      invoke-virtual {v12, v3, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  
++     const-string v3, "crash"
++ 
++     move-object/from16 v0, p2
++ 
++     invoke-virtual {v12, v3, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
++ 
+      iput-object v12, v15, Landroid/os/Message;->obj:Ljava/lang/Object;
+  
+      move-object/from16 v0, p0
+***************
+*** 14565,14570 ****
+      .end local v20    # "ip":I
+      .end local v23    # "pmap":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Ljava/lang/String;Landroid/util/SparseArray<Ljava/lang/Long;>;>;"
+      :cond_9
+      const/16 v8, -0x64
+  
+      const/4 v10, 0x1
+--- 14593,14620 ----
+      .end local v20    # "ip":I
+      .end local v23    # "pmap":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Ljava/lang/String;Landroid/util/SparseArray<Ljava/lang/Long;>;>;"
+      :cond_9
++     :try_start_miui_1
++     invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
++ 
++     move-result-object v4
++ 
++     const/4 v5, 0x0
++ 
++     move-object/from16 v0, p1
++ 
++     invoke-interface {v4, v0, v5}, Landroid/content/pm/IPackageManager;->getPackageUid(Ljava/lang/String;I)I
++ 
++     move-result v4
++ 
++     move-object/from16 v0, p0
++ 
++     move-object/from16 v1, p1
++ 
++     invoke-direct {v0, v4, v1}, Lcom/android/server/am/ActivityManagerService;->killNativePackageProcesses(ILjava/lang/String;)V
++     :try_end_miui_1
++     .catch Landroid/os/RemoteException; {:try_start_miui_1 .. :try_end_miui_1} :catch_miui_0
++ 
++     :goto_miui_0
+      const/16 v8, -0x64
+  
+      const/4 v10, 0x1
+***************
+*** 14783,14788 ****
+  
+      invoke-direct {v0, v1, v2, v4}, Lcom/android/server/am/ActivityManagerService;->removeUriPermissionsForPackageLocked(Ljava/lang/String;IZ)V
+  
+      if-eqz p1, :cond_13
+  
+      if-eqz p7, :cond_1b
+--- 14833,14852 ----
+  
+      invoke-direct {v0, v1, v2, v4}, Lcom/android/server/am/ActivityManagerService;->removeUriPermissionsForPackageLocked(Ljava/lang/String;IZ)V
+  
++     move-object/from16 v0, p0
++ 
++     move-object/from16 v1, p1
++ 
++     move/from16 v2, p8
++ 
++     move/from16 v3, p5
++ 
++     move/from16 v4, v17
++ 
++     invoke-direct {v0, v1, v2, v3, v4}, Lcom/android/server/am/ActivityManagerService;->forceStopPackageLocked_Hook1(Ljava/lang/String;IZZ)Z
++ 
++     move-result v17
++ 
+      if-eqz p1, :cond_13
+  
+      if-eqz p7, :cond_1b
+***************
+*** 19191,19197 ****
+      move-result-object v1
+  
+      .local v1, "context":Landroid/content/Context;
+!     const v4, 0x103006b
+  
+      invoke-virtual {v1, v4}, Landroid/content/Context;->setTheme(I)V
+  
+--- 19287,19293 ----
+      move-result-object v1
+  
+      .local v1, "context":Landroid/content/Context;
+!     sget v4, Lmiui/R$style;->Theme_Light:I
+  
+      invoke-virtual {v1, v4}, Landroid/content/Context;->setTheme(I)V
+  

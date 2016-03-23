@@ -1,0 +1,17 @@
+*** ./smali/android/app/LoadedApk.smali	2016-03-23 22:37:22.759329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/framework.jar.out/./smali/android/app/LoadedApk.smali	2016-03-23 22:34:17.379329364 +0100
+***************
+*** 1812,1817 ****
+--- 1812,1823 ----
+  
+      iput-object v0, p0, Landroid/app/LoadedApk;->mResources:Landroid/content/res/Resources;
+  
++     iget-object v0, p0, Landroid/app/LoadedApk;->mResources:Landroid/content/res/Resources;
++ 
++     iget-object v1, p0, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
++ 
++     invoke-static {v0, v1}, Landroid/miui/ResourcesManager;->initMiuiResource(Landroid/content/res/Resources;Ljava/lang/String;)V
++ 
+      :cond_0
+      iget-object v0, p0, Landroid/app/LoadedApk;->mResources:Landroid/content/res/Resources;
+  

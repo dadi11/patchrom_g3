@@ -1,0 +1,169 @@
+*** ./smali/com/android/server/ServerThread.smali	2016-03-23 22:37:13.367329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/services.jar.out/./smali/com/android/server/ServerThread.smali	2016-03-23 22:34:08.327329364 +0100
+***************
+*** 14,19 ****
+--- 14,20 ----
+  # instance fields
+  .field mContentResolver:Landroid/content/ContentResolver;
+  
++ .field private mSystemServiceManager:Lcom/android/server/SystemServiceManager;
+  
+  # direct methods
+  .method constructor <init>()V
+***************
+*** 25,30 ****
+--- 26,41 ----
+      return-void
+  .end method
+  
++ .method static synthetic access$mSystemServiceManager(Lcom/android/server/ServerThread;)Lcom/android/server/SystemServiceManager;
++     .locals 1
++     .param p0, "x0"    # Lcom/android/server/ServerThread;
++ 
++     .prologue
++     iget-object v0, p0, Lcom/android/server/ServerThread;->mSystemServiceManager:Lcom/android/server/SystemServiceManager;
++ 
++     return-object v0
++ .end method
++ 
+  .method static final startSystemUi(Landroid/content/Context;)V
+      .locals 4
+      .param p0, "context"    # Landroid/content/Context;
+***************
+*** 447,452 ****
+--- 458,479 ----
+  
+      .local v88, "disableNetwork":Z
+      :try_start_3
++     new-instance v7, Lcom/android/server/SystemServiceManager;
++ 
++     invoke-direct {v7, v5}, Lcom/android/server/SystemServiceManager;-><init>(Landroid/content/Context;)V
++ 
++     move-object/from16 v0, p0
++ 
++     iput-object v7, v0, Lcom/android/server/ServerThread;->mSystemServiceManager:Lcom/android/server/SystemServiceManager;
++ 
++     const-class v7, Lcom/android/server/SystemServiceManager;
++ 
++     move-object/from16 v0, p0
++ 
++     iget-object v9, v0, Lcom/android/server/ServerThread;->mSystemServiceManager:Lcom/android/server/SystemServiceManager;
++ 
++     invoke-static {v7, v9}, Lcom/android/server/LocalServices;->addService(Ljava/lang/Class;Ljava/lang/Object;)V
++ 
+      const-string v7, "SystemServer"
+  
+      const-string v9, "Display Manager"
+***************
+*** 691,699 ****
+  
+      invoke-static {v7, v9}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+  
+!     new-instance v6, Lcom/android/server/LightsService;
+  
+!     invoke-direct {v6, v5}, Lcom/android/server/LightsService;-><init>(Landroid/content/Context;)V
+      :try_end_a
+      .catch Ljava/lang/RuntimeException; {:try_start_a .. :try_end_a} :catch_2
+  
+--- 718,726 ----
+  
+      invoke-static {v7, v9}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+  
+!     new-instance v6, Lcom/android/server/MiuiLightsService;
+  
+!     invoke-direct {v6, v5}, Lcom/android/server/MiuiLightsService;-><init>(Landroid/content/Context;)V
+      :try_end_a
+      .catch Ljava/lang/RuntimeException; {:try_start_a .. :try_end_a} :catch_2
+  
+***************
+*** 844,856 ****
+  
+      invoke-static {v7, v9}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+  
+!     new-instance v20, Lcom/android/server/input/InputManagerService;
+  
+      move-object/from16 v0, v20
+  
+      move-object/from16 v1, v21
+  
+!     invoke-direct {v0, v5, v1}, Lcom/android/server/input/InputManagerService;-><init>(Landroid/content/Context;Landroid/os/Handler;)V
+      :try_end_f
+      .catch Ljava/lang/RuntimeException; {:try_start_f .. :try_end_f} :catch_5b
+  
+--- 871,883 ----
+  
+      invoke-static {v7, v9}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+  
+!     new-instance v20, Lcom/android/server/input/MiuiInputManagerService;
+  
+      move-object/from16 v0, v20
+  
+      move-object/from16 v1, v21
+  
+!     invoke-direct {v0, v5, v1}, Lcom/android/server/input/MiuiInputManagerService;-><init>(Landroid/content/Context;Landroid/os/Handler;)V
+      :try_end_f
+      .catch Ljava/lang/RuntimeException; {:try_start_f .. :try_end_f} :catch_5b
+  
+***************
+*** 1903,1908 ****
+--- 1930,1951 ----
+      move-object/from16 v0, v146
+  
+      invoke-static {v7, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
++ 
++     const-string v7, "miui.usb.service"
++ 
++     new-instance v9, Lcom/miui/server/MiuiUsbService;
++ 
++     invoke-direct {v9, v5}, Lcom/miui/server/MiuiUsbService;-><init>(Landroid/content/Context;)V
++ 
++     invoke-static {v7, v9}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
++ 
++     const-string v7, "miui.os.servicemanager"
++ 
++     new-instance v9, Landroid/os/MiuiServiceManagerInternal;
++ 
++     invoke-direct {v9}, Landroid/os/MiuiServiceManagerInternal;-><init>()V
++ 
++     invoke-static {v7, v9}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+      :try_end_40
+      .catch Ljava/lang/Throwable; {:try_start_40 .. :try_end_40} :catch_43
+  
+***************
+*** 1943,1948 ****
+--- 1986,1995 ----
+      .restart local v131    # "serial":Lcom/android/server/SerialService;
+      :cond_14
+      :goto_2d
++     move/from16 v0, v24
++ 
++     invoke-static {v5, v0}, Lcom/android/server/SystemServerInjector;->addExtraServices(Landroid/content/Context;Z)V
++ 
+      :try_start_43
+      const-string v7, "SystemServer"
+  
+***************
+*** 2393,2398 ****
+--- 2440,2461 ----
+  
+      :cond_1e
+      :goto_41
++     move-object/from16 v0, p0
++ 
++     iget-object v7, v0, Lcom/android/server/ServerThread;->mSystemServiceManager:Lcom/android/server/SystemServiceManager;
++ 
++     const-class v9, Lcom/android/server/job/JobSchedulerService;
++ 
++     invoke-virtual {v7, v9}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;
++ 
++     move-object/from16 v0, p0
++ 
++     iget-object v7, v0, Lcom/android/server/ServerThread;->mSystemServiceManager:Lcom/android/server/SystemServiceManager;
++ 
++     const/16 v9, 0x1f4
++ 
++     invoke-virtual {v7, v9}, Lcom/android/server/SystemServiceManager;->startBootPhase(I)V
++ 
+      :try_start_5c
+      invoke-virtual/range {v156 .. v156}, Lcom/android/server/wm/WindowManagerService;->systemReady()V
+      :try_end_5c

@@ -1,0 +1,40 @@
+*** WifiConfiguration$Protocol.smali	2016-03-23 22:37:33.219329364 +0100
+--- WifiConfiguration$Protocol.smali	2016-03-23 22:34:28.867329364 +0100
+***************
+*** 29,35 ****
+      .locals 3
+  
+      .prologue
+!     const/4 v0, 0x2
+  
+      new-array v0, v0, [Ljava/lang/String;
+  
+--- 29,35 ----
+      .locals 3
+  
+      .prologue
+!     const/4 v0, 0x3
+  
+      new-array v0, v0, [Ljava/lang/String;
+  
+***************
+*** 45,50 ****
+  
+      aput-object v2, v0, v1
+  
+      sput-object v0, Landroid/net/wifi/WifiConfiguration$Protocol;->strings:[Ljava/lang/String;
+  
+      return-void
+--- 45,56 ----
+  
+      aput-object v2, v0, v1
+  
++     const/4 v1, 0x2
++ 
++     const-string v2, "WAPI"
++ 
++     aput-object v2, v0, v1
++ 
+      sput-object v0, Landroid/net/wifi/WifiConfiguration$Protocol;->strings:[Ljava/lang/String;
+  
+      return-void

@@ -1,0 +1,42 @@
+*** ResolveInfo$DisplayNameComparator.smali	2016-03-23 22:37:40.847329364 +0100
+--- ResolveInfo$DisplayNameComparator.smali	2016-03-23 22:34:36.319329364 +0100
+***************
+*** 66,71 ****
+      .param p2, "b"    # Landroid/content/pm/ResolveInfo;
+  
+      .prologue
+      iget-object v2, p0, Landroid/content/pm/ResolveInfo$DisplayNameComparator;->mPM:Landroid/content/pm/PackageManager;
+  
+      invoke-virtual {p1, v2}, Landroid/content/pm/ResolveInfo;->loadLabel(Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;
+--- 66,96 ----
+      .param p2, "b"    # Landroid/content/pm/ResolveInfo;
+  
+      .prologue
++     iget-boolean v2, p1, Landroid/content/pm/ResolveInfo;->system:Z
++ 
++     iget-boolean v3, p2, Landroid/content/pm/ResolveInfo;->system:Z
++ 
++     if-eq v2, v3, :cond_miui_0
++ 
++     iget-boolean v2, p1, Landroid/content/pm/ResolveInfo;->system:Z
++ 
++     if-eqz v2, :cond_miui_1
++ 
++     iget-boolean v2, p2, Landroid/content/pm/ResolveInfo;->system:Z
++ 
++     if-nez v2, :cond_miui_1
++ 
++     const/4 v2, -0x1
++ 
++     :goto_miui_0
++     return v2
++ 
++     :cond_miui_1
++     const/4 v2, 0x1
++ 
++     goto :goto_miui_0
++ 
++     :cond_miui_0
+      iget-object v2, p0, Landroid/content/pm/ResolveInfo$DisplayNameComparator;->mPM:Landroid/content/pm/PackageManager;
+  
+      invoke-virtual {p1, v2}, Landroid/content/pm/ResolveInfo;->loadLabel(Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;

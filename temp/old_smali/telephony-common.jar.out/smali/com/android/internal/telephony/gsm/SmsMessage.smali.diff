@@ -1,0 +1,53 @@
+*** ./smali/com/android/internal/telephony/gsm/SmsMessage.smali	2016-03-23 22:37:02.611329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/telephony-common.jar.out/./smali/com/android/internal/telephony/gsm/SmsMessage.smali	2016-03-23 22:33:57.655329364 +0100
+***************
+*** 21,26 ****
+--- 21,28 ----
+  # instance fields
+  .field private mDataCodingScheme:I
+  
++ .field private mEncodingType:I
++ 
+  .field private mIsStatusReportMessage:Z
+  
+  .field private mMti:I
+***************
+*** 49,54 ****
+--- 51,58 ----
+  
+      iput-boolean v0, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mIsStatusReportMessage:Z
+  
++     iput v0, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mEncodingType:I
++ 
+      return-void
+  .end method
+  
+***************
+*** 1669,1674 ****
+--- 1673,1680 ----
+  
+      iput-object v5, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mUserDataHeader:Lcom/android/internal/telephony/SmsHeader;
+  
++     iput v2, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mEncodingType:I
++ 
+      packed-switch v2, :pswitch_data_0
+  
+      :goto_4
+***************
+*** 2105,2110 ****
+--- 2111,2125 ----
+  
+      return v0
+  .end method
++ 
++ .method public getEncodingType()I
++     .locals 1
++ 
++     .prologue
++     iget v0, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mEncodingType:I
++ 
++     return v0
++ .end method
+  
+  .method public getMessageClass()Lcom/android/internal/telephony/SmsConstants$MessageClass;
+      .locals 1

@@ -1,0 +1,43 @@
+*** ./smali/com/android/internal/telephony/uicc/RuimRecords.smali	2016-03-23 22:37:00.527329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/telephony-common.jar.out/./smali/com/android/internal/telephony/uicc/RuimRecords.smali	2016-03-23 22:33:55.623329364 +0100
+***************
+*** 314,319 ****
+--- 314,334 ----
+  
+      const/16 v4, 0x64
+  
++     iget-object v0, p0, Lcom/android/internal/telephony/uicc/RuimRecords;->mDestroyed:Ljava/util/concurrent/atomic/AtomicBoolean;
++ 
++     invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
++ 
++     move-result v0
++ 
++     if-eqz v0, :cond_miui_0
++ 
++     const-string v0, "IccRecords has been disposed"
++ 
++     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/uicc/RuimRecords;->log(Ljava/lang/String;)V
++ 
++     return-void
++ 
++     :cond_miui_0
+      iput-boolean v3, p0, Lcom/android/internal/telephony/uicc/RuimRecords;->mRecordsRequested:Z
+  
+      new-instance v0, Ljava/lang/StringBuilder;
+***************
+*** 2135,2141 ****
+  
+      const-string v1, "gsm.sim.operator.numeric"
+  
+!     invoke-static {v1, v0}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
+  
+      :goto_0
+      iget-object v1, p0, Lcom/android/internal/telephony/uicc/RuimRecords;->mImsi:Ljava/lang/String;
+--- 2150,2156 ----
+  
+      const-string v1, "gsm.sim.operator.numeric"
+  
+!     invoke-virtual {p0, v1, v0}, Lcom/android/internal/telephony/uicc/RuimRecords;->setSystemProperty(Ljava/lang/String;Ljava/lang/String;)V
+  
+      :goto_0
+      iget-object v1, p0, Lcom/android/internal/telephony/uicc/RuimRecords;->mImsi:Ljava/lang/String;

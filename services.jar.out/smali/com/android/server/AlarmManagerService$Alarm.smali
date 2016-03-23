@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0xa
+    accessFlags = 0x8                         # change 0xa -> 0x8
     name = "Alarm"
 .end annotation
 
@@ -86,62 +86,62 @@
     :goto_0
     iput-boolean v1, p0, Lcom/android/server/AlarmManagerService$Alarm;->wakeup:Z
 
-    .line 1646
     iput-wide p2, p0, Lcom/android/server/AlarmManagerService$Alarm;->when:J
 
-    .line 1647
     iput-wide p4, p0, Lcom/android/server/AlarmManagerService$Alarm;->whenElapsed:J
 
-    .line 1648
     iput-wide p6, p0, Lcom/android/server/AlarmManagerService$Alarm;->windowLength:J
 
-    .line 1649
     iput-wide p8, p0, Lcom/android/server/AlarmManagerService$Alarm;->maxWhen:J
 
-    .line 1650
     iput-wide p10, p0, Lcom/android/server/AlarmManagerService$Alarm;->repeatInterval:J
 
-    .line 1651
     iput-object p12, p0, Lcom/android/server/AlarmManagerService$Alarm;->operation:Landroid/app/PendingIntent;
 
-    .line 1652
     invoke-static {p12, p1}, Lcom/android/server/AlarmManagerService$Alarm;->makeTag(Landroid/app/PendingIntent;I)Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/android/server/AlarmManagerService$Alarm;->tag:Ljava/lang/String;
 
-    .line 1653
     iput-object p13, p0, Lcom/android/server/AlarmManagerService$Alarm;->workSource:Landroid/os/WorkSource;
 
-    .line 1654
     move-object/from16 v0, p14
 
     iput-object v0, p0, Lcom/android/server/AlarmManagerService$Alarm;->alarmClock:Landroid/app/AlarmManager$AlarmClockInfo;
 
-    .line 1655
     move/from16 v0, p15
 
     iput v0, p0, Lcom/android/server/AlarmManagerService$Alarm;->userId:I
 
-    .line 1656
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v1
 
     iput v1, p0, Lcom/android/server/AlarmManagerService$Alarm;->uid:I
 
-    .line 1657
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v1
 
     iput v1, p0, Lcom/android/server/AlarmManagerService$Alarm;->pid:I
 
-    .line 1658
+    #add
+    invoke-static {}, Landroid/os/Binder;->getCallingUid()I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/server/AlarmManagerService$Alarm;->uid:I
+
+    invoke-static {}, Landroid/os/Binder;->getCallingPid()I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/server/AlarmManagerService$Alarm;->pid:I
+    #add
+
     return-void
 
-    .line 1643
     :cond_1
     const/4 v1, 0x0
 

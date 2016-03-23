@@ -7,6 +7,7 @@
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Lcom/android/server/content/SyncManager$PrintTable;,
+        Lcom/android/server/content/SyncManager$Injector;,
         Lcom/android/server/content/SyncManager$SyncHandler;,
         Lcom/android/server/content/SyncManager$ServiceConnectionData;,
         Lcom/android/server/content/SyncManager$SyncTimeTracker;,
@@ -108,6 +109,8 @@
 .field private final mSyncHandler:Lcom/android/server/content/SyncManager$SyncHandler;
 
 .field private volatile mSyncManagerWakeLock:Landroid/os/PowerManager$WakeLock;
+
+.field private mSyncOnWifiSettingChanged:Landroid/content/BroadcastReceiver;
 
 .field private final mSyncQueue:Lcom/android/server/content/SyncQueue;
     .annotation build Lcom/android/internal/annotations/GuardedBy;
@@ -455,18 +458,19 @@
 
     invoke-direct {v3, v0}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    .line 431
     .restart local v3    # "intentFilter":Landroid/content/IntentFilter;
     const-string v0, "android.intent.action.DEVICE_STORAGE_OK"
 
     invoke-virtual {v3, v0}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 432
     iget-object v0, p0, Lcom/android/server/content/SyncManager;->mStorageIntentReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {p1, v0, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    .line 434
+    iget-object v0, p0, Lcom/android/server/content/SyncManager;->mSyncOnWifiSettingChanged:Landroid/content/BroadcastReceiver;
+
+    invoke-static {p1, v0}, Lcom/android/server/content/SyncManager$Injector;->registerWifiOnlyReceiver(Landroid/content/Context;Landroid/content/BroadcastReceiver;)V
+
     new-instance v3, Landroid/content/IntentFilter;
 
     .end local v3    # "intentFilter":Landroid/content/IntentFilter;
@@ -4959,6 +4963,193 @@
     const/4 v2, 0x0
 
     goto :goto_0
+.end method
+
+.method private isTrafficForbidden(Lcom/android/server/content/SyncOperation;)Z
+    .locals 9
+    .param p1, "op"    # Lcom/android/server/content/SyncOperation;
+
+    .prologue
+    const/4 v8, 0x2
+
+    const/4 v6, 0x1
+
+    const/4 v5, 0x0
+
+    iget-boolean v0, p0, Lcom/android/server/content/SyncManager;->mDataConnectionIsConnected:Z
+
+    .local v0, "allowed":Z
+    const/4 v2, 0x0
+
+    .local v2, "ignoreSettings":Z
+    if-eqz p1, :cond_0
+
+    iget-object v4, p1, Lcom/android/server/content/SyncOperation;->extras:Landroid/os/Bundle;
+
+    const-string v7, "ignore_settings"
+
+    invoke-virtual {v4, v7, v5}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result v2
+
+    :cond_0
+    if-eqz v2, :cond_2
+
+    const-string v4, "SyncManager"
+
+    invoke-static {v4, v8}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_1
+
+    const-string v4, "SyncManager"
+
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v8, "checking traffic, ignore settings, traffic allowed: "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    const-string v8, ", op: "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-static {v4, v7}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_1
+    :goto_0
+    if-nez v0, :cond_6
+
+    :goto_1
+    return v6
+
+    :cond_2
+    invoke-direct {p0}, Lcom/android/server/content/SyncManager;->getConnectivityManager()Landroid/net/ConnectivityManager;
+
+    move-result-object v1
+
+    .local v1, "cm":Landroid/net/ConnectivityManager;
+    iget-object v4, p0, Lcom/android/server/content/SyncManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v4
+
+    const-string v7, "sync_on_wifi_only"
+
+    invoke-static {v4, v7, v5}, Landroid/provider/Settings$Secure;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v4
+
+    if-ne v4, v6, :cond_4
+
+    move v3, v6
+
+    .local v3, "wifiOnly":Z
+    :goto_2
+    if-eqz v3, :cond_3
+
+    invoke-virtual {v1}, Landroid/net/ConnectivityManager;->isActiveNetworkMetered()Z
+
+    move-result v4
+
+    if-nez v4, :cond_5
+
+    :cond_3
+    move v4, v6
+
+    :goto_3
+    and-int/2addr v0, v4
+
+    const-string v4, "SyncManager"
+
+    invoke-static {v4, v8}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_1
+
+    const-string v4, "SyncManager"
+
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v8, "checking traffic, wifi only: "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    const-string v8, ", traffic allowed: "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    const-string v8, ", op: "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-static {v4, v7}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_0
+
+    .end local v3    # "wifiOnly":Z
+    :cond_4
+    move v3, v5
+
+    goto :goto_2
+
+    .restart local v3    # "wifiOnly":Z
+    :cond_5
+    move v4, v5
+
+    goto :goto_3
+
+    .end local v1    # "cm":Landroid/net/ConnectivityManager;
+    .end local v3    # "wifiOnly":Z
+    :cond_6
+    move v6, v5
+
+    goto :goto_1
 .end method
 
 .method private jitterize(JJ)J
@@ -10274,4 +10465,17 @@
 
     .line 291
     return-void
+.end method
+
+.method static synthetic access_isTrafficForbidden(Lcom/android/server/content/SyncManager;Lcom/android/server/content/SyncOperation;)Z
+    .locals 1
+    .param p0, "x0"    # Lcom/android/server/content/SyncManager;
+    .param p1, "x1"    # Lcom/android/server/content/SyncOperation;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/content/SyncManager;->isTrafficForbidden(Lcom/android/server/content/SyncOperation;)Z
+
+    move-result v0
+
+    return v0
 .end method

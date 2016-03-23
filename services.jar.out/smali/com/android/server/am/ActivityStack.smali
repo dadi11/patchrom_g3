@@ -2797,6 +2797,80 @@
     return-void
 .end method
 
+.method private startPausingLocked_Middle(Lcom/android/server/am/ActivityRecord;)V
+    .locals 2
+    .param p1, "prev"    # Lcom/android/server/am/ActivityRecord;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/am/ActivityStack;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
+
+    invoke-virtual {v0}, Lcom/android/server/wm/WindowManagerService;->getFocusedWindowType()I
+
+    move-result v0
+
+    const/16 v1, 0x7d0
+
+    if-eq v0, v1, :cond_1
+
+    iget-object v0, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
+
+    iget-object v0, v0, Lcom/android/server/am/TaskRecord;->intent:Landroid/content/Intent;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
+
+    iget-object v0, v0, Lcom/android/server/am/TaskRecord;->intent:Landroid/content/Intent;
+
+    invoke-virtual {v0}, Landroid/content/Intent;->getFlags()I
+
+    move-result v0
+
+    const/high16 v1, 0x800000
+
+    and-int/2addr v0, v1
+
+    if-nez v0, :cond_1
+
+    :cond_0
+    iget-object v1, p0, Lcom/android/server/am/ActivityStack;->mContext:Landroid/content/Context;
+
+    iget-object v0, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
+
+    iget-object v0, v0, Lcom/android/server/am/TaskRecord;->origActivity:Landroid/content/ComponentName;
+
+    if-eqz v0, :cond_2
+
+    iget-object v0, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
+
+    iget-object v0, v0, Lcom/android/server/am/TaskRecord;->origActivity:Landroid/content/ComponentName;
+
+    invoke-virtual {v0}, Landroid/content/ComponentName;->flattenToShortString()Ljava/lang/String;
+
+    move-result-object v0
+
+    :goto_0
+    invoke-static {v1, v0}, Lmiui/util/ScreenshotUtils;->captureActivityScreenshot(Landroid/content/Context;Ljava/lang/String;)V
+
+    :cond_1
+    return-void
+
+    :cond_2
+    iget-object v0, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
+
+    iget-object v0, v0, Lcom/android/server/am/TaskRecord;->intent:Landroid/content/Intent;
+
+    invoke-virtual {v0}, Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/ComponentName;->flattenToShortString()Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_0
+.end method
+
 .method private stopFullyDrawnTraceIfNeeded()V
     .locals 6
 
@@ -10270,27 +10344,25 @@
 
     if-eqz v4, :cond_1
 
-    .line 3757
     invoke-static {p3}, Landroid/app/ActivityOptions;->abort(Landroid/os/Bundle;)V
 
-    .line 3796
     :goto_0
     return-void
 
-    .line 3759
     :cond_1
     invoke-virtual {p0, v5, p3}, Lcom/android/server/am/ActivityStack;->updateTransitLocked(ILandroid/os/Bundle;)V
 
     goto :goto_0
 
-    .line 3764
     :cond_2
     invoke-virtual {p0}, Lcom/android/server/am/ActivityStack;->moveToFront()V
 
-    .line 3768
+    iget-object v3, p0, Lcom/android/server/am/ActivityStack;->mTaskHistory:Ljava/util/ArrayList;
+
+    invoke-static {p0, v3, p1}, Lcom/android/server/am/ActivityStackInjector;->transferOnTopOfHomeForMoveTaskToFrontLocked(Lcom/android/server/am/ActivityStack;Ljava/util/ArrayList;Lcom/android/server/am/TaskRecord;)V
+
     invoke-direct {p0, p1}, Lcom/android/server/am/ActivityStack;->insertTaskAtTop(Lcom/android/server/am/TaskRecord;)V
 
-    .line 3771
     if-eqz p2, :cond_5
 
     iget-object v4, p2, Lcom/android/server/am/ActivityRecord;->intent:Landroid/content/Intent;
