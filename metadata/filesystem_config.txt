@@ -550,7 +550,6 @@ system/framework/core.jar 0 0 644
 system/framework/core-junit.jar 0 0 644
 system/framework/core-libart.jar 0 0 644
 system/framework/ext.jar 0 0 644
-system/framework/framework2.jar 0 0 644
 system/framework/framework.jar 0 0 644
 system/framework/framework-res.apk 0 0 644
 system/framework/ime.jar 0 0 644
