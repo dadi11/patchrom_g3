@@ -1,0 +1,39 @@
+*** ScanResult.smali	2016-03-24 11:22:01.939329364 +0100
+--- ScanResult.smali	2016-03-24 11:19:12.167329364 +0100
+***************
+*** 425,430 ****
+  
+      invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  
+      invoke-virtual {v1}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+  
+      move-result-object v2
+--- 493,520 ----
+  
+      invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  
++     const-string v2, ", wpsState :"
++ 
++     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
++ 
++     move-result-object v2
++ 
++     iget-object v3, p0, Landroid/net/wifi/ScanResult;->wpsState:Ljava/lang/String;
++ 
++     invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
++ 
++     move-result-object v2
++ 
++     const-string v3, ", wpsDeviceName :"
++ 
++     invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
++ 
++     move-result-object v2
++ 
++     iget-object v3, p0, Landroid/net/wifi/ScanResult;->wpsDeviceName:Ljava/lang/String;
++ 
++     invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
++ 
+      invoke-virtual {v1}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+  
+      move-result-object v2

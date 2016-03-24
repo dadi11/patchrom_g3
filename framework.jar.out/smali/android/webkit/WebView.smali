@@ -195,24 +195,22 @@
     :goto_0
     sput-boolean v0, Landroid/webkit/WebView;->sEnforceThreadChecking:Z
 
-    .line 550
     invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
 
-    .line 553
     invoke-direct {p0}, Landroid/webkit/WebView;->ensureProviderCreated()V
 
-    .line 554
     iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
 
     invoke-interface {v0, p5, p6}, Landroid/webkit/WebViewProvider;->init(Ljava/util/Map;Z)V
 
-    .line 556
     invoke-static {}, Landroid/webkit/CookieSyncManager;->setGetInstanceIsAllowed()V
 
-    .line 557
+    invoke-static {p0, p1}, Landroid/webkit/WebViewInjector;->initEgretLoader(Landroid/webkit/WebView;Landroid/content/Context;)V
+
+    invoke-static {p1}, Lmiui/content/res/ThemeFontChangeHelper;->markWebViewCreated(Landroid/content/Context;)V
+
     return-void
 
-    .line 548
     :cond_1
     const/4 v0, 0x0
 

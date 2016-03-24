@@ -10336,6 +10336,24 @@
     return-void
 .end method
 
+.method createInputChannelAnyWay()V
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mInputChannel:Landroid/view/InputChannel;
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Landroid/view/InputChannel;
+
+    invoke-direct {v0}, Landroid/view/InputChannel;-><init>()V
+
+    iput-object v0, p0, Landroid/view/ViewRootImpl;->mInputChannel:Landroid/view/InputChannel;
+
+    :cond_0
+    return-void
+.end method
+
 .method public debug()V
     .locals 1
 
@@ -10495,6 +10513,26 @@
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_1
+.end method
+
+.method discardInputChannelBySetting()V
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mWindowAttributes:Landroid/view/WindowManager$LayoutParams;
+
+    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->inputFeatures:I
+
+    and-int/lit8 v0, v0, 0x2
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Landroid/view/ViewRootImpl;->mInputChannel:Landroid/view/InputChannel;
+
+    :cond_0
+    return-void
 .end method
 
 .method public dispatchAppVisibility(Z)V
@@ -14968,21 +15006,14 @@
     .param p1, "stopped"    # Z
 
     .prologue
-    .line 957
     iget-boolean v0, p0, Landroid/view/ViewRootImpl;->mStopped:Z
 
     if-eq v0, p1, :cond_0
 
-    .line 958
-    iput-boolean p1, p0, Landroid/view/ViewRootImpl;->mStopped:Z
-
-    .line 959
     if-nez p1, :cond_0
 
-    .line 960
     invoke-virtual {p0}, Landroid/view/ViewRootImpl;->scheduleTraversals()V
 
-    .line 963
     :cond_0
     return-void
 .end method
@@ -16105,6 +16136,8 @@
 
     .line 606
     :cond_d
+    invoke-virtual/range {p0 .. p0}, Landroid/view/ViewRootImpl;->discardInputChannelBySetting()V
+
     move-object/from16 v0, p0
 
     iget-object v4, v0, Landroid/view/ViewRootImpl;->mInputChannel:Landroid/view/InputChannel;

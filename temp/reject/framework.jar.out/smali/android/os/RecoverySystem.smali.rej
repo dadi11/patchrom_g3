@@ -1,0 +1,21 @@
+*** RecoverySystem.smali	2016-03-24 11:22:16.239329364 +0100
+--- RecoverySystem.smali	2016-03-24 11:19:26.487329364 +0100
+***************
+*** 710,715 ****
+      invoke-direct {v1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+  
+      .local v1, "intent":Landroid/content/Intent;
+      sget-object v2, Landroid/os/UserHandle;->OWNER:Landroid/os/UserHandle;
+  
+      const-string v3, "android.permission.MASTER_CLEAR"
+--- 824,833 ----
+      invoke-direct {v1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+  
+      .local v1, "intent":Landroid/content/Intent;
++     const/high16 v0, 0x10000000
++ 
++     invoke-virtual {v1, v0}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
++ 
+      sget-object v2, Landroid/os/UserHandle;->OWNER:Landroid/os/UserHandle;
+  
+      const-string v3, "android.permission.MASTER_CLEAR"

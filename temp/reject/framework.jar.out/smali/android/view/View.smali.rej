@@ -1,0 +1,48 @@
+*** View.smali	2016-03-24 11:22:11.663329364 +0100
+--- View.smali	2016-03-24 11:19:22.167329364 +0100
+***************
+*** 760,765 ****
+  
+  .field private mFloatingTreeObserver:Landroid/view/ViewTreeObserver;
+  
+  .field private mHardwareLayer:Landroid/view/HardwareLayer;
+  
+  .field private mHasPerformedLongPress:Z
+--- 760,767 ----
+  
+  .field private mFloatingTreeObserver:Landroid/view/ViewTreeObserver;
+  
++ .field mHapticEnabledExplicitly:Z
++ 
+  .field private mHardwareLayer:Landroid/view/HardwareLayer;
+  
+  .field private mHasPerformedLongPress:Z
+***************
+*** 2822,2827 ****
+      goto/16 :goto_1
+  
+      :pswitch_24
+      const/16 v48, 0x1
+  
+      move/from16 v0, v48
+--- 2824,2843 ----
+      goto/16 :goto_1
+  
+      :pswitch_24
++     const/16 v48, 0x0
++ 
++     move/from16 v0, v48
++ 
++     invoke-virtual {v6, v7, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
++ 
++     move-result v48
++ 
++     move/from16 v0, v48
++ 
++     move-object/from16 v1, p0
++ 
++     iput-boolean v0, v1, Landroid/view/View;->mHapticEnabledExplicitly:Z
++ 
+      const/16 v48, 0x1
+  
+      move/from16 v0, v48

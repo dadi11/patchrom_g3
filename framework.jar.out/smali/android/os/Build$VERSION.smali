@@ -34,6 +34,8 @@
 
 .field public static final SDK_INT:I
 
+.field public static final SECURITY_PATCH:Ljava/lang/String;
+
 
 # direct methods
 .method static constructor <clinit>()V

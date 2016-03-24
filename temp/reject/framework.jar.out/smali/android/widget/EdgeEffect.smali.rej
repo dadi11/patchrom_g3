@@ -1,0 +1,19 @@
+*** EdgeEffect.smali	2016-03-24 11:21:48.483329364 +0100
+--- EdgeEffect.smali	2016-03-24 11:18:58.959329364 +0100
+***************
+*** 94,99 ****
+  
+  .field private final mInterpolator:Landroid/view/animation/Interpolator;
+  
+  .field private final mMaxEffectHeight:I
+  
+  .field private final mMinWidth:I
+--- 94,101 ----
+  
+  .field private final mInterpolator:Landroid/view/animation/Interpolator;
+  
++ .field mIsUsingMiui:Z
++ 
+  .field private final mMaxEffectHeight:I
+  
+  .field private final mMinWidth:I

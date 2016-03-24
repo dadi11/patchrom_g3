@@ -1,0 +1,44 @@
+*** AlarmManagerService$Alarm.smali	2016-03-24 11:21:35.155329364 +0100
+--- AlarmManagerService$Alarm.smali	2016-03-24 11:18:49.519329364 +0100
+***************
+*** 21,30 ****
+  
+  .field public operation:Landroid/app/PendingIntent;
+  
+  .field public repeatInterval:J
+  
+  .field public type:I
+  
+  .field public when:J
+  
+  .field public whenElapsed:J
+--- 21,32 ----
+  
+  .field public operation:Landroid/app/PendingIntent;
+  
++ .field public pid:I                            # add
+  .field public repeatInterval:J
+  
+  .field public type:I
+  
++ .field public uid:I                            # add
+  .field public when:J
+  
+  .field public whenElapsed:J
+***************
+*** 36,42 ****
+  
+  # direct methods
+  .method public constructor <init>(IJJJJJLandroid/app/PendingIntent;Landroid/os/WorkSource;)V
+!     .locals 0
+      .param p1, "_type"    # I
+      .param p2, "_when"    # J
+      .param p4, "_whenElapsed"    # J
+--- 38,44 ----
+  
+  # direct methods
+  .method public constructor <init>(IJJJJJLandroid/app/PendingIntent;Landroid/os/WorkSource;)V
+!     .locals 1                             # change 0->1
+      .param p1, "_type"    # I
+      .param p2, "_when"    # J
+      .param p4, "_whenElapsed"    # J

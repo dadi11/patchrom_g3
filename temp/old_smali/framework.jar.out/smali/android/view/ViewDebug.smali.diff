@@ -1,0 +1,19 @@
+*** ./smali/android/view/ViewDebug.smali	2016-03-24 11:22:12.279329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/framework.jar.out/./smali/android/view/ViewDebug.smali	2016-03-24 11:19:22.739329364 +0100
+***************
+*** 4688,4693 ****
+--- 4688,4701 ----
+      const-string v3, "\\n"
+  
+      invoke-virtual {v1, v2, v3}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
++ 
++     move-result-object v1
++ 
++     const-string v2, "\r"
++ 
++     const-string v3, "\\r"
++ 
++     invoke-virtual {v1, v2, v3}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      :try_end_0
+      .catchall {:try_start_0 .. :try_end_0} :catchall_0
+  

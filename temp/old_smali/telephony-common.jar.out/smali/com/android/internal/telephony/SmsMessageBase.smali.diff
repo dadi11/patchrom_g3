@@ -1,0 +1,20 @@
+*** ./smali/com/android/internal/telephony/SmsMessageBase.smali	2016-03-24 11:21:26.787329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/telephony-common.jar.out/./smali/com/android/internal/telephony/SmsMessageBase.smali	2016-03-24 11:18:39.431329364 +0100
+***************
+*** 171,176 ****
+--- 171,185 ----
+      return-object v0
+  .end method
+  
++ .method public getEncodingType()I
++     .locals 1
++ 
++     .prologue
++     const/4 v0, 0x0
++ 
++     return v0
++ .end method
++ 
+  .method public getIndexOnIcc()I
+      .locals 1
+  

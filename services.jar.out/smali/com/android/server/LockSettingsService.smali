@@ -1555,6 +1555,28 @@
     return-void
 .end method
 
+.method public setRawLockPassword([BI)V
+    .locals 1
+    .param p1, "hash"    # [B
+    .param p2, "userId"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    invoke-direct {p0, p2}, Lcom/android/server/LockSettingsService;->checkWritePermission(I)V
+
+    invoke-direct {p0, p2}, Lcom/android/server/LockSettingsService;->getLockPasswordFilename(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {p0, v0, p1}, Lcom/android/server/LockSettingsService;->writeFile(Ljava/lang/String;[B)V
+
+    return-void
+.end method
+
 .method public setString(Ljava/lang/String;Ljava/lang/String;I)V
     .locals 0
     .param p1, "key"    # Ljava/lang/String;

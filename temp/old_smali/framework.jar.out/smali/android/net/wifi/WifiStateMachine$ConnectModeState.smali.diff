@@ -1,0 +1,19 @@
+*** ./smali/android/net/wifi/WifiStateMachine$ConnectModeState.smali	2016-03-24 11:22:02.175329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/framework.jar.out/./smali/android/net/wifi/WifiStateMachine$ConnectModeState.smali	2016-03-24 11:19:12.391329364 +0100
+***************
+*** 666,672 ****
+  
+      const v11, 0x25001
+  
+!     invoke-virtual {v10, v11}, Landroid/net/wifi/SupplicantStateTracker;->sendMessage(I)V
+  
+      iget-object v10, p0, Landroid/net/wifi/WifiStateMachine$ConnectModeState;->this$0:Landroid/net/wifi/WifiStateMachine;
+  
+--- 666,672 ----
+  
+      const v11, 0x25001
+  
+!     invoke-virtual {v10, v11, v2}, Landroid/net/wifi/SupplicantStateTracker;->sendMessage(II)V
+  
+      iget-object v10, p0, Landroid/net/wifi/WifiStateMachine$ConnectModeState;->this$0:Landroid/net/wifi/WifiStateMachine;
+  

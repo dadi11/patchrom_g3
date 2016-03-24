@@ -1,0 +1,19 @@
+*** ScanResult$1.smali	2016-03-24 11:22:01.651329364 +0100
+--- ScanResult$1.smali	2016-03-24 11:19:11.895329364 +0100
+***************
+*** 40,46 ****
+  
+  # virtual methods
+  .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/ScanResult;
+!     .locals 10
+      .param p1, "in"    # Landroid/os/Parcel;
+  
+      .prologue
+--- 40,46 ----
+  
+  # virtual methods
+  .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/ScanResult;
+!     .locals 12
+      .param p1, "in"    # Landroid/os/Parcel;
+  
+      .prologue

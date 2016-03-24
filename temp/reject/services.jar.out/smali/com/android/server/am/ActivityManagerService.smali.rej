@@ -1,0 +1,90 @@
+*** ActivityManagerService.smali	2016-03-24 11:21:37.907329364 +0100
+--- ActivityManagerService.smali	2016-03-24 11:18:52.027329364 +0100
+***************
+*** 3268,3273 ****
+  
+      move-object/from16 v0, p0
+  
+      iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
+  
+      iget v5, v5, Lcom/android/server/am/BackupRecord;->backupMode:I
+--- 3270,3291 ----
+  
+      move-object/from16 v0, p0
+  
++     iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
++ 
++     move-object/from16 v0, p0
++ 
++     iget-object v9, v0, Lcom/android/server/am/ActivityManagerService;->mBackupAppName:Ljava/lang/String;
++ 
++     move-object/from16 v0, v25
++ 
++     invoke-static {v5, v9, v0}, Lcom/android/server/am/ActivityManagerServiceInjector;->isStartWithBackupRestriction(Landroid/content/Context;Ljava/lang/String;Lcom/android/server/am/ProcessRecord;)Z
++ 
++     move-result v5
++ 
++     if-eqz v5, :cond_a
++ 
++     move-object/from16 v0, p0
++ 
+      iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
+  
+      iget v5, v5, Lcom/android/server/am/BackupRecord;->backupMode:I
+***************
+*** 3848,3853 ****
+  
+      .end local p3    # "intent":Landroid/content/Intent;
+      .local v15, "intent":Landroid/content/Intent;
+      const/16 v3, 0x10
+  
+      invoke-virtual {v15, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+--- 3866,3875 ----
+  
+      .end local p3    # "intent":Landroid/content/Intent;
+      .local v15, "intent":Landroid/content/Intent;
++     move-object/from16 v0, p2
++ 
++     invoke-virtual {v15, v0}, Landroid/content/Intent;->setSender(Ljava/lang/String;)V
++ 
+      const/16 v3, 0x10
+  
+      invoke-virtual {v15, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+***************
+*** 10857,10862 ****
+  
+      invoke-virtual {v12, v3, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  
+      iput-object v12, v15, Landroid/os/Message;->obj:Ljava/lang/Object;
+  
+      move-object/from16 v0, p0
+--- 10879,10890 ----
+  
+      invoke-virtual {v12, v3, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  
++     const-string v3, "crash"
++ 
++     move-object/from16 v0, p2
++ 
++     invoke-virtual {v12, v3, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
++ 
+      iput-object v12, v15, Landroid/os/Message;->obj:Ljava/lang/Object;
+  
+      move-object/from16 v0, p0
+***************
+*** 19227,19233 ****
+      move-result-object v1
+  
+      .local v1, "context":Landroid/content/Context;
+!     const v4, 0x103006b
+  
+      invoke-virtual {v1, v4}, Landroid/content/Context;->setTheme(I)V
+  
+--- 19323,19329 ----
+      move-result-object v1
+  
+      .local v1, "context":Landroid/content/Context;
+!     sget v4, Lmiui/R$style;->Theme_Light:I
+  
+      invoke-virtual {v1, v4}, Landroid/content/Context;->setTheme(I)V
+  

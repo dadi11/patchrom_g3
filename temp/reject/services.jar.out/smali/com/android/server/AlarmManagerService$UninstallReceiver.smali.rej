@@ -1,0 +1,21 @@
+*** AlarmManagerService$UninstallReceiver.smali	2016-03-24 11:21:40.111329364 +0100
+--- AlarmManagerService$UninstallReceiver.smali	2016-03-24 11:18:53.499329364 +0100
+***************
+*** 203,208 ****
+  
+      :cond_3
+      :goto_2
+      if-eqz v7, :cond_7
+  
+      array-length v9, v7
+--- 203,212 ----
+  
+      :cond_3
+      :goto_2
++     invoke-static {v7}, Lcom/android/server/AlarmManagerService$Injector;->filterPersistPackages([Ljava/lang/String;)[Ljava/lang/String;
++ 
++     move-result-object v7
++ 
+      if-eqz v7, :cond_7
+  
+      array-length v9, v7

@@ -105,6 +105,8 @@
 
 .field private mNumPhones:I
 
+.field private mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
+
 .field private mOtaspMode:I
 
 .field private mPreciseCallState:Landroid/telephony/PreciseCallState;
@@ -156,125 +158,103 @@
 
     const/4 v5, 0x0
 
-    .line 278
     invoke-direct {p0}, Lcom/android/internal/telephony/ITelephonyRegistry$Stub;-><init>()V
 
-    .line 123
     new-instance v3, Ljava/util/ArrayList;
 
     invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mRemoveList:Ljava/util/ArrayList;
 
-    .line 124
     new-instance v3, Ljava/util/ArrayList;
 
     invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mRecords:Ljava/util/ArrayList;
 
-    .line 128
     iput-boolean v5, p0, Lcom/android/server/TelephonyRegistry;->hasNotifySubscriptionInfoChangedOccurred:Z
 
-    .line 164
     const/4 v3, 0x1
 
     iput v3, p0, Lcom/android/server/TelephonyRegistry;->mOtaspMode:I
 
-    .line 166
     iput-object v7, p0, Lcom/android/server/TelephonyRegistry;->mCellInfo:Ljava/util/ArrayList;
 
-    .line 168
     new-instance v3, Landroid/telephony/VoLteServiceState;
 
     invoke-direct {v3}, Landroid/telephony/VoLteServiceState;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mVoLteServiceState:Landroid/telephony/VoLteServiceState;
 
-    .line 170
     iput v6, p0, Lcom/android/server/TelephonyRegistry;->mDefaultSubId:I
 
-    .line 172
     iput v6, p0, Lcom/android/server/TelephonyRegistry;->mDefaultPhoneId:I
 
-    .line 174
     new-instance v3, Landroid/telephony/DataConnectionRealTimeInfo;
 
     invoke-direct {v3}, Landroid/telephony/DataConnectionRealTimeInfo;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mDcRtInfo:Landroid/telephony/DataConnectionRealTimeInfo;
 
-    .line 176
     iput v5, p0, Lcom/android/server/TelephonyRegistry;->mRingingCallState:I
 
-    .line 178
     iput v5, p0, Lcom/android/server/TelephonyRegistry;->mForegroundCallState:I
 
-    .line 180
     iput v5, p0, Lcom/android/server/TelephonyRegistry;->mBackgroundCallState:I
 
-    .line 182
     new-instance v3, Landroid/telephony/PreciseCallState;
 
     invoke-direct {v3}, Landroid/telephony/PreciseCallState;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mPreciseCallState:Landroid/telephony/PreciseCallState;
 
-    .line 184
     new-instance v3, Landroid/telephony/PreciseDataConnectionState;
 
     invoke-direct {v3}, Landroid/telephony/PreciseDataConnectionState;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mPreciseDataConnectionState:Landroid/telephony/PreciseDataConnectionState;
 
-    .line 202
     new-instance v3, Lcom/android/server/TelephonyRegistry$1;
 
     invoke-direct {v3, p0}, Lcom/android/server/TelephonyRegistry$1;-><init>(Lcom/android/server/TelephonyRegistry;)V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mHandler:Landroid/os/Handler;
 
-    .line 242
     new-instance v3, Lcom/android/server/TelephonyRegistry$2;
 
     invoke-direct {v3, p0}, Lcom/android/server/TelephonyRegistry$2;-><init>(Lcom/android/server/TelephonyRegistry;)V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 1525
     const/16 v3, 0xa
 
     new-array v3, v3, [Lcom/android/server/TelephonyRegistry$LogSSC;
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->logSSC:[Lcom/android/server/TelephonyRegistry$LogSSC;
 
-    .line 1526
     iput v5, p0, Lcom/android/server/TelephonyRegistry;->next:I
 
-    .line 279
+    iput-object v2, p0, Lcom/android/server/TelephonyRegistry;->mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
+
     invoke-static {}, Landroid/telephony/CellLocation;->getEmpty()Landroid/telephony/CellLocation;
 
     move-result-object v1
 
-    .line 281
     .local v1, "location":Landroid/telephony/CellLocation;
     iput-object p1, p0, Lcom/android/server/TelephonyRegistry;->mContext:Landroid/content/Context;
 
-    .line 282
     invoke-static {}, Lcom/android/server/am/BatteryStatsService;->getService()Lcom/android/internal/app/IBatteryStats;
 
     move-result-object v3
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mBatteryStats:Lcom/android/internal/app/IBatteryStats;
 
-    .line 283
     new-instance v3, Ljava/util/ArrayList;
 
     invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/TelephonyRegistry;->mConnectedApns:Ljava/util/ArrayList;
 
-    .line 285
     invoke-static {}, Landroid/telephony/TelephonyManager;->getDefault()Landroid/telephony/TelephonyManager;
 
     move-result-object v3
@@ -7229,4 +7209,23 @@
 
     .line 338
     return-void
+.end method
+
+.method public setMiuiTelephony(Lmiui/telephony/IMiuiTelephony;)V
+    .locals 0
+    .param p1, "telephony"    # Lmiui/telephony/IMiuiTelephony;
+
+    .prologue
+    iput-object p1, p0, Lcom/android/server/TelephonyRegistry;->mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
+
+    return-void
+.end method
+
+.method public getMiuiTelephony()Lmiui/telephony/IMiuiTelephony;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/TelephonyRegistry;->mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
+
+    return-object v0
 .end method

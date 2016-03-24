@@ -1,0 +1,55 @@
+*** OverScroller.smali	2016-03-24 11:21:50.431329364 +0100
+--- OverScroller.smali	2016-03-24 11:19:00.863329364 +0100
+***************
+*** 133,140 ****
+      return-void
+  .end method
+  
+  .method public computeScrollOffset()Z
+!     .locals 8
+  
+      .prologue
+      invoke-virtual {p0}, Landroid/widget/OverScroller;->isFinished()Z
+--- 135,176 ----
+      return-void
+  .end method
+  
++ .method public final checkSpringBackState()Z
++     .locals 2
++ 
++     .prologue
++     const/4 v0, 0x1
++ 
++     iget-object v1, p0, Landroid/widget/OverScroller;->mScrollerY:Landroid/widget/OverScroller$SplineOverScroller;
++ 
++     # getter for: Landroid/widget/OverScroller$SplineOverScroller;->mState:I
++     invoke-static {v1}, Landroid/widget/OverScroller$SplineOverScroller;->access$700(Landroid/widget/OverScroller$SplineOverScroller;)I
++ 
++     move-result v1
++ 
++     if-eq v1, v0, :cond_0
++ 
++     iget-object v1, p0, Landroid/widget/OverScroller;->mScrollerX:Landroid/widget/OverScroller$SplineOverScroller;
++ 
++     # getter for: Landroid/widget/OverScroller$SplineOverScroller;->mState:I
++     invoke-static {v1}, Landroid/widget/OverScroller$SplineOverScroller;->access$700(Landroid/widget/OverScroller$SplineOverScroller;)I
++ 
++     move-result v1
++ 
++     if-ne v1, v0, :cond_1
++ 
++     :cond_0
++     :goto_0
++     return v0
++ 
++     :cond_1
++     const/4 v0, 0x0
++ 
++     goto :goto_0
++ .end method
++ 
+  .method public computeScrollOffset()Z
+!     .locals 9
+  
+      .prologue
+      invoke-virtual {p0}, Landroid/widget/OverScroller;->isFinished()Z

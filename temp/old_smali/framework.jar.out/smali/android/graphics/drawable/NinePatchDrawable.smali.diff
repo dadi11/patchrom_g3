@@ -1,0 +1,17 @@
+*** ./smali/android/graphics/drawable/NinePatchDrawable.smali	2016-03-24 11:21:57.167329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/framework.jar.out/./smali/android/graphics/drawable/NinePatchDrawable.smali	2016-03-24 11:19:07.515329364 +0100
+***************
+*** 254,259 ****
+--- 254,265 ----
+  
+      iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
+  
++     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
++ 
++     iget-object v4, v4, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mPadding:Landroid/graphics/Rect;
++ 
++     iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPadding:Landroid/graphics/Rect;
++ 
+      :goto_0
+      return-void
+  

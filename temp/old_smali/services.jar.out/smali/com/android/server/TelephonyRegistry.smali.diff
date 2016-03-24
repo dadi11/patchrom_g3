@@ -1,0 +1,49 @@
+*** ./smali/com/android/server/TelephonyRegistry.smali	2016-03-24 11:21:36.427329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/services.jar.out/./smali/com/android/server/TelephonyRegistry.smali	2016-03-24 11:18:50.711329364 +0100
+***************
+*** 80,85 ****
+--- 80,87 ----
+  
+  .field private mMessageWaiting:Z
+  
++ .field private mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
++ 
+  .field private mOtaspMode:I
+  
+  .field private final mRecords:Ljava/util/ArrayList;
+***************
+*** 195,200 ****
+--- 197,204 ----
+  
+      iput-object v1, p0, Lcom/android/server/TelephonyRegistry;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
+  
++     iput-object v2, p0, Lcom/android/server/TelephonyRegistry;->mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
++ 
+      invoke-static {}, Landroid/telephony/CellLocation;->getEmpty()Landroid/telephony/CellLocation;
+  
+      move-result-object v0
+***************
+*** 3179,3181 ****
+--- 3183,3204 ----
+  
+      return-void
+  .end method
++ 
++ .method public setMiuiTelephony(Lmiui/telephony/IMiuiTelephony;)V
++     .locals 0
++     .param p1, "telephony"    # Lmiui/telephony/IMiuiTelephony;
++ 
++     .prologue
++     iput-object p1, p0, Lcom/android/server/TelephonyRegistry;->mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
++ 
++     return-void
++ .end method
++ 
++ .method public getMiuiTelephony()Lmiui/telephony/IMiuiTelephony;
++     .locals 1
++ 
++     .prologue
++     iget-object v0, p0, Lcom/android/server/TelephonyRegistry;->mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
++ 
++     return-object v0
++ .end method

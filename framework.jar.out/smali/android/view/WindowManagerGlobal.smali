@@ -2394,6 +2394,10 @@
     throw v3
 
     :cond_1
+    const/4 v4, 0x1
+
+    invoke-static {p1, p2, v4}, Lmiui/util/ScreenshotDrawable;->processBlurBehindFlag(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;Z)V
+
     move-object v2, p2
 
     .line 303

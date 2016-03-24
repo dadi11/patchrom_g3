@@ -1,0 +1,19 @@
+*** WifiEnterpriseConfig.smali	2016-03-24 11:22:01.511329364 +0100
+--- WifiEnterpriseConfig.smali	2016-03-24 11:19:11.751329364 +0100
+***************
+*** 1933,1938 ****
+          :pswitch_0
+          :pswitch_0
+          :pswitch_0
+      .end packed-switch
+  .end method
+  
+--- 1933,1940 ----
+          :pswitch_0
+          :pswitch_0
+          :pswitch_0
++         :pswitch_0
++         :pswitch_0
+      .end packed-switch
+  .end method
+  

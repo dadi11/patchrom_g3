@@ -1,0 +1,21 @@
+*** WindowManagerGlobal.smali	2016-03-24 11:22:13.835329364 +0100
+--- WindowManagerGlobal.smali	2016-03-24 11:19:24.271329364 +0100
+***************
+*** 574,579 ****
+      throw v8
+  
+      :cond_2
+      move-object v7, p2
+  
+      check-cast v7, Landroid/view/WindowManager$LayoutParams;
+--- 574,583 ----
+      throw v8
+  
+      :cond_2
++     const/4 v9, 0x0
++ 
++     invoke-static {p1, p2, v9}, Lmiui/util/ScreenshotDrawable;->processBlurBehindFlag(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;Z)V
++ 
+      move-object v7, p2
+  
+      check-cast v7, Landroid/view/WindowManager$LayoutParams;

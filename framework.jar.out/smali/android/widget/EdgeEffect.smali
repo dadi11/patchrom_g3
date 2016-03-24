@@ -201,14 +201,18 @@
 
     invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setXfermode(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
 
-    .line 128
     new-instance v2, Landroid/view/animation/DecelerateInterpolator;
 
     invoke-direct {v2}, Landroid/view/animation/DecelerateInterpolator;-><init>()V
 
     iput-object v2, p0, Landroid/widget/EdgeEffect;->mInterpolator:Landroid/view/animation/Interpolator;
 
-    .line 129
+    invoke-static {p1}, Lmiui/os/Environment;->isUsingMiui(Landroid/content/Context;)Z
+
+    move-result v1
+
+    iput-boolean v1, p0, Landroid/widget/EdgeEffect;->mIsUsingMiui:Z
+
     return-void
 .end method
 
@@ -421,15 +425,19 @@
 
     const/4 v10, 0x0
 
-    .line 319
+    iget-boolean v5, p0, Landroid/widget/EdgeEffect;->mIsUsingMiui:Z
+
+    if-eqz v5, :cond_miui_0
+
+    return v4
+
+    :cond_miui_0
     invoke-direct {p0}, Landroid/widget/EdgeEffect;->update()V
 
-    .line 321
     invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
 
     move-result v2
 
-    .line 323
     .local v2, "count":I
     iget-object v7, p0, Landroid/widget/EdgeEffect;->mBounds:Landroid/graphics/Rect;
 

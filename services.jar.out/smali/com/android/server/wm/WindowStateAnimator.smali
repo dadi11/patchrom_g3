@@ -5480,40 +5480,37 @@
 
     const/4 v9, 0x0
 
-    .line 1506
     iget-object v2, p0, Lcom/android/server/wm/WindowStateAnimator;->mWin:Lcom/android/server/wm/WindowState;
 
-    .line 1507
     .local v2, "w":Lcom/android/server/wm/WindowState;
     iget-object v3, p0, Lcom/android/server/wm/WindowStateAnimator;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     if-nez v3, :cond_1
 
-    .line 1508
     iget-boolean v3, v2, Lcom/android/server/wm/WindowState;->mOrientationChanging:Z
 
     if-eqz v3, :cond_0
 
-    .line 1512
     iput-boolean v9, v2, Lcom/android/server/wm/WindowState;->mOrientationChanging:Z
 
-    .line 1625
     :cond_0
     :goto_0
     return-void
 
-    .line 1517
+    iget v3, p0, Lcom/android/server/wm/WindowStateAnimator;->mAttrType:I
+
+    const/16 v4, 0x7dd
+
+    if-eq v3, v4, :cond_2
+
     :cond_1
     const/4 v0, 0x0
 
-    .line 1519
     .local v0, "displayed":Z
     invoke-virtual {p0}, Lcom/android/server/wm/WindowStateAnimator;->computeShownFrameLocked()V
 
-    .line 1521
     invoke-virtual {p0, p1}, Lcom/android/server/wm/WindowStateAnimator;->setSurfaceBoundariesLocked(Z)V
 
-    .line 1523
     iget-boolean v3, p0, Lcom/android/server/wm/WindowStateAnimator;->mIsWallpaper:Z
 
     if-eqz v3, :cond_4

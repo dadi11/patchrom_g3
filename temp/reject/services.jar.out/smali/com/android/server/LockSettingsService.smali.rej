@@ -1,0 +1,41 @@
+*** LockSettingsService.smali	2016-03-24 11:21:36.343329364 +0100
+--- LockSettingsService.smali	2016-03-24 11:18:50.647329364 +0100
+***************
+*** 6,12 ****
+  # annotations
+  .annotation system Ldalvik/annotation/MemberClasses;
+      value = {
+!         Lcom/android/server/LockSettingsService$DatabaseHelper;
+      }
+  .end annotation
+  
+--- 6,13 ----
+  # annotations
+  .annotation system Ldalvik/annotation/MemberClasses;
+      value = {
+!         Lcom/android/server/LockSettingsService$DatabaseHelper;,
+!         Lcom/android/server/LockSettingsService$Injector;
+      }
+  .end annotation
+  
+***************
+*** 1259,1265 ****
+      move-result-object v2
+  
+      .local v2, "hash":[B
+!     invoke-static {v6, v2}, Ljava/util/Arrays;->equals([B[B)Z
+  
+      move-result v4
+  
+--- 1260,1270 ----
+      move-result-object v2
+  
+      .local v2, "hash":[B
+!     invoke-static {v6, v2}, Lcom/android/server/LockSettingsService$Injector;->passwordToHash([B[B)[B
+! 
+!     move-result-object v8
+! 
+!     invoke-static {v6, v8}, Ljava/util/Arrays;->equals([B[B)Z
+  
+      move-result v4
+  

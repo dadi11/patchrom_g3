@@ -1,0 +1,13 @@
+*** ./smali/com/android/server/ConnectivityService$VpnCallback.smali	2016-03-24 11:21:37.231329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/services.jar.out/./smali/com/android/server/ConnectivityService$VpnCallback.smali	2016-03-24 11:18:51.411329364 +0100
+***************
+*** 215,220 ****
+--- 215,222 ----
+  
+      invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
+  
++     invoke-static {p1}, Lcom/android/server/ConnectivityServiceInjector;->notifyVpnStatusChanged(Landroid/net/NetworkInfo;)V
++ 
+      return-void
+  .end method
+  

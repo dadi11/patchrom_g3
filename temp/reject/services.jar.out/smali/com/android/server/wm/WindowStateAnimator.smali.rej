@@ -1,0 +1,32 @@
+*** WindowStateAnimator.smali	2016-03-24 11:21:36.599329364 +0100
+--- WindowStateAnimator.smali	2016-03-24 11:18:50.863329364 +0100
+***************
+*** 2829,2834 ****
+      invoke-static {}, Landroid/view/SurfaceControl;->openTransaction()V
+  
+      :try_start_1
+      iget-object v0, p0, Lcom/android/server/wm/WindowStateAnimator;->mWin:Lcom/android/server/wm/WindowState;
+  
+      iget-object v0, v0, Lcom/android/server/wm/WindowState;->mFrame:Landroid/graphics/Rect;
+--- 2829,2849 ----
+      invoke-static {}, Landroid/view/SurfaceControl;->openTransaction()V
+  
+      :try_start_1
++     iget v0, v7, Landroid/view/WindowManager$LayoutParams;->flags:I
++ 
++     and-int/lit8 v0, v0, 0x4
++ 
++     if-eqz v0, :cond_miui_0
++ 
++     iget-object v0, p0, Lcom/android/server/wm/WindowStateAnimator;->mSurfaceControl:Landroid/view/SurfaceControl;
++ 
++     const/16 v1, 0x80
++ 
++     const/16 v2, 0x80
++ 
++     invoke-virtual {v0, v1, v2}, Landroid/view/SurfaceControl;->setFlags(II)V
++ 
++     :cond_miui_0
+      iget-object v0, p0, Lcom/android/server/wm/WindowStateAnimator;->mWin:Lcom/android/server/wm/WindowState;
+  
+      iget-object v0, v0, Lcom/android/server/wm/WindowState;->mFrame:Landroid/graphics/Rect;

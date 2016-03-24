@@ -1,0 +1,21 @@
+*** ./smali/com/android/server/LightsService.smali	2016-03-24 11:21:40.011329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/services.jar.out/./smali/com/android/server/LightsService.smali	2016-03-24 11:18:53.439329364 +0100
+***************
+*** 207,209 ****
+--- 207,222 ----
+  
+      return-object v0
+  .end method
++ 
++ .method public setLight(ILcom/android/server/LightsService$Light;)V
++     .locals 1
++     .param p1, "index"    # I
++     .param p2, "light"    # Lcom/android/server/LightsService$Light;
++ 
++     .prologue
++     iget-object v0, p0, Lcom/android/server/LightsService;->mLights:[Lcom/android/server/LightsService$Light;
++ 
++     aput-object p2, v0, p1
++ 
++     return-void
++ .end method

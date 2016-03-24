@@ -341,6 +341,16 @@
 .method public abstract addContentView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 .end method
 
+.method public addExtraFlags(I)V
+    .locals 0
+    .param p1, "flags"    # I
+
+    .prologue
+    invoke-virtual {p0, p1, p1}, Landroid/view/Window;->setExtraFlags(II)V
+
+    return-void
+.end method
+
 .method public addFlags(I)V
     .locals 0
     .param p1, "flags"    # I
@@ -622,6 +632,18 @@
 .end method
 
 .method public abstract alwaysReadCloseOnTouchAttr()V
+.end method
+
+.method public clearExtraFlags(I)V
+    .locals 1
+    .param p1, "flags"    # I
+
+    .prologue
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0, p1}, Landroid/view/Window;->setExtraFlags(II)V
+
+    return-void
 .end method
 
 .method public clearFlags(I)V
@@ -1614,6 +1636,72 @@
     return-void
 .end method
 
+.method public setExtraFlags(II)V
+    .locals 4
+    .param p1, "flags"    # I
+    .param p2, "mask"    # I
+
+    .prologue
+    const/high16 v3, 0x4000000
+
+    invoke-virtual {p0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+
+    move-result-object v0
+
+    .local v0, "attrs":Landroid/view/WindowManager$LayoutParams;
+    iget v1, v0, Landroid/view/WindowManager$LayoutParams;->extraFlags:I
+
+    xor-int/lit8 v2, p2, -0x1
+
+    and-int/2addr v1, v2
+
+    and-int v2, p1, p2
+
+    or-int/2addr v1, v2
+
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->extraFlags:I
+
+    and-int/lit8 v1, p2, 0x1
+
+    if-eqz v1, :cond_0
+
+    and-int/lit8 v1, p1, 0x1
+
+    if-eqz v1, :cond_2
+
+    iget v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
+
+    and-int/2addr v1, v3
+
+    if-nez v1, :cond_0
+
+    invoke-virtual {p0, v3, v3}, Landroid/view/Window;->setFlags(II)V
+
+    :cond_0
+    :goto_0
+    iget-object v1, p0, Landroid/view/Window;->mCallback:Landroid/view/Window$Callback;
+
+    if-eqz v1, :cond_1
+
+    iget-object v1, p0, Landroid/view/Window;->mCallback:Landroid/view/Window$Callback;
+
+    invoke-interface {v1, v0}, Landroid/view/Window$Callback;->onWindowAttributesChanged(Landroid/view/WindowManager$LayoutParams;)V
+
+    :cond_1
+    return-void
+
+    :cond_2
+    iget v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
+
+    and-int/2addr v1, v3
+
+    if-eqz v1, :cond_0
+
+    invoke-virtual {p0, v3}, Landroid/view/Window;->clearFlags(I)V
+
+    goto :goto_0
+.end method
+
 .method public abstract setFeatureDrawable(ILandroid/graphics/drawable/Drawable;)V
 .end method
 
@@ -1630,17 +1718,17 @@
 .end method
 
 .method public setFlags(II)V
-    .locals 3
+    .locals 4
     .param p1, "flags"    # I
     .param p2, "mask"    # I
 
     .prologue
-    .line 815
+    const/high16 v3, 0x4000000
+
     invoke-virtual {p0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
 
     move-result-object v0
 
-    .line 816
     .local v0, "attrs":Landroid/view/WindowManager$LayoutParams;
     iget v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
 
@@ -1654,17 +1742,14 @@
 
     iput v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
 
-    .line 817
     iget v1, p0, Landroid/view/Window;->mForcedWindowFlags:I
 
     or-int/2addr v1, p2
 
     iput v1, p0, Landroid/view/Window;->mForcedWindowFlags:I
 
-    .line 818
     invoke-virtual {p0, v0}, Landroid/view/Window;->dispatchWindowAttributesChanged(Landroid/view/WindowManager$LayoutParams;)V
 
-    .line 819
     return-void
 .end method
 
@@ -1673,37 +1758,31 @@
     .param p1, "format"    # I
 
     .prologue
-    .line 721
+    .line 815
     invoke-virtual {p0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
 
     move-result-object v0
 
-    .line 722
+    .line 816
     .local v0, "attrs":Landroid/view/WindowManager$LayoutParams;
     if-eqz p1, :cond_0
 
-    .line 723
     iput p1, v0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 724
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Landroid/view/Window;->mHaveWindowFormat:Z
 
-    .line 729
     :goto_0
     invoke-virtual {p0, v0}, Landroid/view/Window;->dispatchWindowAttributesChanged(Landroid/view/WindowManager$LayoutParams;)V
 
-    .line 730
     return-void
 
-    .line 726
     :cond_0
     iget v1, p0, Landroid/view/Window;->mDefaultWindowFormat:I
 
     iput v1, v0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 727
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Landroid/view/Window;->mHaveWindowFormat:Z

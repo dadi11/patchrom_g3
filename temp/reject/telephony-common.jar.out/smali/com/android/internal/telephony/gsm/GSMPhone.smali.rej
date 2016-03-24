@@ -1,0 +1,32 @@
+*** GSMPhone.smali	2016-03-24 11:21:28.079329364 +0100
+--- GSMPhone.smali	2016-03-24 11:18:40.767329364 +0100
+***************
+*** 3654,3659 ****
+      return-void
+  
+      :cond_1
+      iget-object v2, p0, Lcom/android/internal/telephony/gsm/GSMPhone;->mUiccController:Lcom/android/internal/telephony/uicc/UiccController;
+  
+      const/4 v3, 0x1
+--- 3675,3695 ----
+      return-void
+  
+      :cond_1
++     iget-object v2, p0, Lcom/android/internal/telephony/gsm/GSMPhone;->mMiuiIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/MiuiIccPhoneBookInterfaceManager;
++ 
++     if-eqz v2, :cond_miui_0
++ 
++     iget-object v2, p0, Lcom/android/internal/telephony/gsm/GSMPhone;->mMiuiIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/MiuiIccPhoneBookInterfaceManager;
++ 
++     iget-object v3, p0, Lcom/android/internal/telephony/gsm/GSMPhone;->mUiccController:Lcom/android/internal/telephony/uicc/UiccController;
++ 
++     invoke-virtual {v3}, Lcom/android/internal/telephony/uicc/UiccController;->getUiccCard()Lcom/android/internal/telephony/uicc/UiccCard;
++ 
++     move-result-object v3
++ 
++     invoke-virtual {v2, v3}, Lcom/android/internal/telephony/MiuiIccPhoneBookInterfaceManager;->setIccCard(Lcom/android/internal/telephony/uicc/UiccCard;)V
++ 
++     :cond_miui_0
+      iget-object v2, p0, Lcom/android/internal/telephony/gsm/GSMPhone;->mUiccController:Lcom/android/internal/telephony/uicc/UiccController;
+  
+      const/4 v3, 0x1

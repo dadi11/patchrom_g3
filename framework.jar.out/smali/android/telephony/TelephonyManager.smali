@@ -7073,6 +7073,23 @@
 
     iget v1, p1, Landroid/telephony/PhoneStateListener;->mSubId:I
 
+    if-nez v2, :cond_miui_0
+
+    const-string v2, "telephony.registry"
+
+    invoke-static {v2}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+
+    move-result-object v2
+
+    invoke-static {v2}, Lcom/android/internal/telephony/ITelephonyRegistry$Stub;->asInterface(Landroid/os/IBinder;)Lcom/android/internal/telephony/ITelephonyRegistry;
+
+    move-result-object v2
+
+    sput-object v2, Landroid/telephony/TelephonyManager;->sRegistry:Lcom/android/internal/telephony/ITelephonyRegistry;
+
+    :cond_miui_0
+    sget-object v2, Landroid/telephony/TelephonyManager;->sRegistry:Lcom/android/internal/telephony/ITelephonyRegistry;
+
     iget-object v3, p1, Landroid/telephony/PhoneStateListener;->callback:Lcom/android/internal/telephony/IPhoneStateListener;
 
     invoke-virtual {v6}, Ljava/lang/Boolean;->booleanValue()Z
@@ -8121,6 +8138,16 @@
     return v0
 .end method
 
+.method public setContext(Landroid/content/Context;)V
+    .locals 0
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    iput-object p1, p0, Landroid/telephony/TelephonyManager;->mContext:Landroid/content/Context;
+
+    return-void
+.end method
+
 .method public setRadio(Z)Z
     .locals 3
     .param p1, "turnOn"    # Z
@@ -8729,4 +8756,43 @@
     invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0
+.end method
+
+.method public static from(Landroid/content/Context;I)Landroid/telephony/TelephonyManager;
+    .locals 1
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "slotId"    # I
+
+    .prologue
+    invoke-static {p0}, Landroid/telephony/TelephonyManager;->from(Landroid/content/Context;)Landroid/telephony/TelephonyManager;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public static getDefault(I)Landroid/telephony/TelephonyManager;
+    .locals 1
+    .param p0, "slotId"    # I
+
+    .prologue
+    sget-object v0, Landroid/telephony/TelephonyManager;->sInstance:Landroid/telephony/TelephonyManager;
+
+    return-object v0
+.end method
+
+.method public setDefaultDataSlotId(I)V
+    .locals 0
+    .param p1, "slotId"    # I
+
+    .prologue
+    return-void
+.end method
+
+.method public setDefaultVoiceSlotId(I)V
+    .locals 0
+    .param p1, "slotId"    # I
+
+    .prologue
+    return-void
 .end method

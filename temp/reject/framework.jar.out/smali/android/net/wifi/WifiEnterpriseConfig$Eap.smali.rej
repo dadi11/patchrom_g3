@@ -1,0 +1,46 @@
+*** WifiEnterpriseConfig$Eap.smali	2016-03-24 11:22:01.731329364 +0100
+--- WifiEnterpriseConfig$Eap.smali	2016-03-24 11:19:11.979329364 +0100
+***************
+*** 33,39 ****
+      .locals 3
+  
+      .prologue
+!     const/4 v0, 0x4
+  
+      new-array v0, v0, [Ljava/lang/String;
+  
+--- 33,39 ----
+      .locals 3
+  
+      .prologue
+!     const/4 v0, 0x6
+  
+      new-array v0, v0, [Ljava/lang/String;
+  
+***************
+*** 61,66 ****
+  
+      aput-object v2, v0, v1
+  
+      sput-object v0, Landroid/net/wifi/WifiEnterpriseConfig$Eap;->strings:[Ljava/lang/String;
+  
+      return-void
+--- 61,78 ----
+  
+      aput-object v2, v0, v1
+  
++     const/4 v1, 0x4
++ 
++     const-string v2, "SIM"
++ 
++     aput-object v2, v0, v1
++ 
++     const/4 v1, 0x5
++ 
++     const-string v2, "AKA"
++ 
++     aput-object v2, v0, v1
++ 
+      sput-object v0, Landroid/net/wifi/WifiEnterpriseConfig$Eap;->strings:[Ljava/lang/String;
+  
+      return-void

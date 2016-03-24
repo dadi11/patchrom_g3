@@ -1,0 +1,27 @@
+*** ViewRootImpl.smali	2016-03-24 11:22:11.563329364 +0100
+--- ViewRootImpl.smali	2016-03-24 11:19:22.051329364 +0100
+***************
+*** 13401,13410 ****
+      move-object/from16 v0, p0
+  
+      iput-object v3, v0, Landroid/view/ViewRootImpl;->mInputChannel:Landroid/view/InputChannel;
+      :try_end_0
+      .catchall {:try_start_0 .. :try_end_0} :catchall_0
+  
+-     :cond_6
+      :try_start_1
+      move-object/from16 v0, p0
+  
+--- 13437,13448 ----
+      move-object/from16 v0, p0
+  
+      iput-object v3, v0, Landroid/view/ViewRootImpl;->mInputChannel:Landroid/view/InputChannel;
++ 
++     :cond_6
++     invoke-virtual/range {p0 .. p0}, Landroid/view/ViewRootImpl;->createInputChannelAnyWay()V
+      :try_end_0
+      .catchall {:try_start_0 .. :try_end_0} :catchall_0
+  
+      :try_start_1
+      move-object/from16 v0, p0
+  

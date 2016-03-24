@@ -453,6 +453,16 @@
     throw v1
 .end method
 
+.method public static getDefault(I)Landroid/telephony/SmsManager;
+    .locals 1
+    .param p0, "slotId"    # I
+
+    .prologue
+    sget-object v0, Landroid/telephony/SmsManager;->sInstance:Landroid/telephony/SmsManager;
+
+    return-object v0
+.end method
+
 
 # virtual methods
 .method public addMultimediaMessageDraft(Landroid/net/Uri;)Landroid/net/Uri;
@@ -2620,4 +2630,40 @@
     const/4 v1, 0x0
 
     goto :goto_0
+.end method
+
+.method public sendMultipartTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;IZI)V
+    .locals 0
+    .param p1, "destinationAddress"    # Ljava/lang/String;
+    .param p2, "scAddress"    # Ljava/lang/String;
+    .param p6, "priority"    # I
+    .param p7, "isExpectMore"    # Z
+    .param p8, "validityPeriod"    # I
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Landroid/app/PendingIntent;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Landroid/app/PendingIntent;",
+            ">;IZI)V"
+        }
+    .end annotation
+
+    .prologue
+    .local p3, "parts":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
+    .local p4, "sentIntents":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/app/PendingIntent;>;"
+    .local p5, "deliveryIntents":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/app/PendingIntent;>;"
+    invoke-virtual/range {p0 .. p5}, Landroid/telephony/SmsManager;->sendMultipartTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
+
+    return-void
 .end method

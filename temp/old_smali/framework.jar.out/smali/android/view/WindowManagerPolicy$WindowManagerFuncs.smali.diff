@@ -1,0 +1,14 @@
+*** ./smali/android/view/WindowManagerPolicy$WindowManagerFuncs.smali	2016-03-24 11:22:12.759329364 +0100
+--- /home/dadi11/miui/g3/temp/new_smali/framework.jar.out/./smali/android/view/WindowManagerPolicy$WindowManagerFuncs.smali	2016-03-24 11:19:23.195329364 +0100
+***************
+*** 32,37 ****
+--- 32,40 ----
+  .method public abstract getWindowManagerLock()Ljava/lang/Object;
+  .end method
+  
++ .method public abstract reboot()V
++ .end method
++ 
+  .method public abstract rebootSafeMode(Z)V
+  .end method
+  

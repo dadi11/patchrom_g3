@@ -1,0 +1,23 @@
+*** SyncManager.smali	2016-03-24 11:21:40.275329364 +0100
+--- SyncManager.smali	2016-03-24 11:18:53.591329364 +0100
+***************
+*** 297,302 ****
+  
+      iput-object v0, p0, Lcom/android/server/content/SyncManager;->mShutdownIntentReceiver:Landroid/content/BroadcastReceiver;
+  
+      new-instance v0, Lcom/android/server/content/SyncManager$7;
+  
+      invoke-direct {v0, p0}, Lcom/android/server/content/SyncManager$7;-><init>(Lcom/android/server/content/SyncManager;)V
+--- 300,311 ----
+  
+      iput-object v0, p0, Lcom/android/server/content/SyncManager;->mShutdownIntentReceiver:Landroid/content/BroadcastReceiver;
+  
++     new-instance v0, Lcom/android/server/content/SyncManager$SyncOnWifiSettingChangedReceiver;
++ 
++     invoke-direct {v0, p0}, Lcom/android/server/content/SyncManager$SyncOnWifiSettingChangedReceiver;-><init>(Lcom/android/server/content/SyncManager;)V
++ 
++     iput-object v0, p0, Lcom/android/server/content/SyncManager;->mSyncOnWifiSettingChanged:Landroid/content/BroadcastReceiver;
++ 
+      new-instance v0, Lcom/android/server/content/SyncManager$7;
+  
+      invoke-direct {v0, p0}, Lcom/android/server/content/SyncManager$7;-><init>(Lcom/android/server/content/SyncManager;)V
