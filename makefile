@@ -9,13 +9,13 @@ local-zip-file     := stockrom.zip
 local-out-zip-file := MIUI_G3.zip
 
 # All vendor apks needed
-local-phone-apps := LGBluetooth4 HTMLViewer KeyChain LGEIME LgNfc PacProcessor \
-        UserDictionaryProvider qcrilmsgtunnel LteConfigs 
+local-phone-apps := Bluetooth Camera2 CertInstaller HTMLViewer KeyChain LatinIME NfcNci PacProcessor \
+        Provision shutdownlistener UserDictionaryProvider qcrilmsgtunnel WAPPushManager \
+        com.qualcomm.location com.qualcomm.services.location 
 
-local-phone-priv-apps := BackupRestoreConfirmation DefaultContainerService FusedLocation \
-        InputDevices ProxyHandler SharedStorageBackup \
-        Shell TagGoogle VpnDialogs com.qualcomm.location com.qualcomm.services.location \
-        LGCameraApp LGNetworkSettings LGSettings WapService
+local-phone-priv-apps := BackupRestoreConfirmation DefaultContainerService ExternalStorage Provider FusedLocation \
+        InputDevices MediaProvider OneTimeInitializer ProxyHandler SharedStorageBackup \
+        Shell Tag VpnDialogs Telecom TelephonyProvider TeleService
 
 local-density := XXHDPI
 
